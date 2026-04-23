@@ -1,0 +1,136 @@
+/* ==========================================================================
+   MOVE Concierge — Colors & Type
+   Source of truth: move-concierge-62712e.webflow/css/move-concierge-62712e.webflow.css
+   ========================================================================== */
+
+/* Webfonts — loaded via Google Fonts (matches the production site) */
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400..900;1,400..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  /* ---------- PRIMARY ---------- */
+  --primary-colors--utility-blue: #164a80;   /* signature deep blue — H1 accents, primary CTA base */
+  --primary-colors--mantis-green: #73c421;   /* signature bright leafy green — accents, progress */
+  --primary-colors--bright-cerulean: #2da7df;/* sky blue — accents, gradient partner */
+  --primary-colors--white: #ffffff;
+
+  /* ---------- SECONDARY ---------- */
+  --secondary-colors--licorice: #231f20;        /* primary body text / near-black */
+  --secondary-colors--leaf-green: #4f9c17;      /* CTA gradient start, links */
+  --secondary-colors--leaf-green-light: #5bb11c;/* CTA gradient end */
+  --secondary-colors--leaf-green-dark: #418317;
+  --secondary-colors--coral: #f86751;           /* highlight / accent */
+  --secondary-colors--lemon: #ffd429;           /* spot accent */
+  --secondary-colors--tangerine: #ff8c42;       /* spot accent */
+  --secondary-colors--verdigris: #46afa7;       /* teal accent */
+  --secondary-colors--han-blue: #3f5bc7;        /* deep indigo accent */
+
+  /* ---------- TERTIARY / NEUTRALS ---------- */
+  --tertiary-colors--gray: #d4d7dd;          /* hairlines, borders, disabled */
+  --tertiary-colors--medium-gray: #6c757d;   /* secondary text */
+  --tertiary-colors--light-gray: #f5f7fa;    /* panel / tertiary button bg */
+  --tertiary--leaf-pastel: #edf5e8;          /* soft green tint */
+
+  /* ---------- SEMANTIC ---------- */
+  --fg-1: var(--secondary-colors--licorice);
+  --fg-2: var(--tertiary-colors--medium-gray);
+  --fg-invert: var(--primary-colors--white);
+  --bg-1: var(--primary-colors--white);
+  --bg-2: var(--tertiary-colors--light-gray);
+  --bg-invert: var(--secondary-colors--licorice);
+  --accent-primary: var(--primary-colors--utility-blue);
+  --accent-secondary: var(--primary-colors--mantis-green);
+  --border-default: var(--tertiary-colors--gray);
+  --link: var(--secondary-colors--leaf-green);
+  --link-hover: var(--secondary-colors--licorice);
+
+  /* ---------- GRADIENTS ---------- */
+  --gradient-cta: linear-gradient(77.6deg, var(--secondary-colors--leaf-green), var(--secondary-colors--leaf-green-light));
+  --gradient-badge: linear-gradient(90deg, var(--primary-colors--mantis-green), var(--primary-colors--bright-cerulean));
+  --gradient-hero-blue: radial-gradient(ellipse at top, #2da7df33, transparent 60%);
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-cta-green: 0 9px 56px #9cff394d; /* halo under green CTAs */
+  --shadow-cta-blue:  0 9px 56px #61b5db80;
+  --shadow-dropdown:  0 4px 10px #164a804d;
+  --shadow-card-soft: 0 2px 24px rgba(22, 74, 128, 0.06);
+  --shadow-card-blue: 0 12px 48px rgba(22, 74, 128, 0.12);
+
+  /* ---------- RADII ---------- */
+  --borders--small: 6px;
+  --borders--medium: 20px;
+  --borders--default: 40px;
+  --radius-pill: 100px;
+
+  /* ---------- SPACING ---------- */
+  --spacing--default: 18px;
+  --spacing--medium: 24px;
+  --spacing--large: 40px;
+  --spacing--xlarge: 64px;
+
+  /* ---------- TYPE FAMILIES ---------- */
+  --font-family--workhorse: "Red Hat Display", system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+  --font-family--accent: "PT Serif", Georgia, serif;
+
+  /* ---------- TYPE SIZES ---------- */
+  --font-size--base: 20px;
+  --font-size--3xs: 12px;
+  --font-size--2xxs: 13px;
+  --font-size--2xs: 14px;
+  --font-size--xs: 16px;
+  --font-size--sm: 18px;
+  --font-size--lg: 22px;
+  --font-size--xl: 24px;
+  --font-size--2xl: 26px;
+  --font-size--3xl: 32px;
+  --font-size--4xl: 34px;
+  --font-size--5xl: 40px;
+  --font-size--6xl: 44px;
+  --font-size--7xl: 60px;
+  --font-size--8xl: 70px;
+  --font-size--9xl: 78px;
+  --font-size--10xl: 90px;
+}
+
+/* ==========================================================================
+   ELEMENT DEFAULTS (match webflow CSS)
+   ========================================================================== */
+body {
+  font-family: var(--font-family--workhorse);
+  color: var(--fg-1);
+  font-size: var(--font-size--base);
+  line-height: 1.55;
+  background: var(--bg-1);
+}
+
+h1, .type-h1 { font-family: var(--font-family--workhorse); font-size: var(--font-size--9xl); font-weight: 800; line-height: 89px; margin: 0; }
+h2, .type-h2 { font-family: var(--font-family--workhorse); font-size: var(--font-size--8xl); font-weight: 800; line-height: 73px; margin: 0; }
+h3, .type-h3 { font-family: var(--font-family--workhorse); font-size: var(--font-size--7xl); font-weight: 800; line-height: 68px; margin: 0; }
+h4, .type-h4 { font-family: var(--font-family--workhorse); font-size: var(--font-size--6xl); font-weight: 800; line-height: 50px; margin: 0; }
+h5, .type-h5 { font-family: var(--font-family--workhorse); font-size: var(--font-size--3xl); font-weight: 900; line-height: 34px; margin: 0; }
+p { margin: 0; }
+
+/* The signature serif-italic accent, used INSIDE a sans headline,
+   to soften a single word (e.g. "Handled." / "results" / "works") */
+em, .font-accent {
+  font-family: var(--font-family--accent);
+  font-style: italic;
+  font-weight: 400;
+}
+
+a { color: var(--fg-1); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--secondary-colors--leaf-green-light); }
+
+strong { font-weight: 900; }
+label { font-size: var(--font-size--3xs); font-weight: 800; line-height: 12.6px; letter-spacing: .02em; }
+
+/* Helpers */
+.type-xs   { font-size: var(--font-size--xs); line-height: 26px; }
+.type-sm   { font-size: var(--font-size--sm); line-height: 28px; font-weight: 400; }
+.type-base { font-size: var(--font-size--base); line-height: 31px; font-weight: 700; }
+.type-xl   { font-size: var(--font-size--xl); font-weight: 900; line-height: 32px; letter-spacing: .32px; }
+.weight-black { font-weight: 900; }
+.weight-extrabold { font-weight: 800; }
+
+.text-blue  { color: var(--primary-colors--utility-blue); }
+.text-green { color: var(--secondary-colors--leaf-green); }
+.text-white { color: var(--primary-colors--white); }

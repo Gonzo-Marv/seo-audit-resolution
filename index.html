@@ -1,0 +1,1502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SEO Audit Resolution Report — Move Concierge</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<style>
+/* ------------------------------------------------------------------ */
+/* Layout scaffolding                                                  */
+/* ------------------------------------------------------------------ */
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body {
+  background: var(--bg-1);
+  color: var(--fg-1);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.page {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 40px 48px 120px;
+}
+.rule {
+  height: 1px; background: var(--tertiary-colors--gray);
+  margin: 64px 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Sticky progress bar                                                 */
+/* ------------------------------------------------------------------ */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: #ffffffe6;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--tertiary-colors--gray);
+}
+.topbar-inner {
+  max-width: 1160px; margin: 0 auto;
+  padding: 14px 48px;
+  display: flex; align-items: center; gap: 28px;
+  flex-wrap: wrap;
+}
+.topbar .brand {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 900; font-size: 15px;
+  color: var(--primary-colors--utility-blue);
+}
+.topbar .brand img { height: 26px; width: auto; }
+.topbar .divider {
+  width: 1px; height: 24px; background: var(--tertiary-colors--gray);
+}
+.topbar .stat {
+  display: flex; align-items: baseline; gap: 8px;
+  font-size: 13px; color: var(--tertiary-colors--medium-gray);
+  font-weight: 700;
+}
+.topbar .stat .num {
+  font-size: 15px; font-weight: 900;
+  color: var(--secondary-colors--licorice);
+  font-variant-numeric: tabular-nums;
+}
+.topbar .stat .arrow { color: var(--tertiary-colors--gray); }
+.topbar .stat .new {
+  color: var(--secondary-colors--leaf-green);
+  font-weight: 900;
+}
+.topbar .spacer { flex: 1; }
+.topbar nav {
+  display: flex; gap: 18px; font-size: 13px; font-weight: 700;
+}
+.topbar nav a {
+  color: var(--tertiary-colors--medium-gray);
+  transition: color .2s;
+}
+.topbar nav a:hover { color: var(--primary-colors--utility-blue); }
+
+/* ------------------------------------------------------------------ */
+/* Cover                                                               */
+/* ------------------------------------------------------------------ */
+.cover { padding: 72px 0 24px; }
+.cover .eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 800; letter-spacing: .14px;
+  text-transform: uppercase;
+  color: var(--primary-colors--utility-blue);
+  padding: 8px 16px;
+  border: 1px solid var(--primary-colors--utility-blue);
+  border-radius: 100px;
+}
+.cover h1 {
+  font-size: 72px; line-height: 1.02; font-weight: 800;
+  margin: 28px 0 20px;
+  letter-spacing: -0.02em;
+  max-width: 960px;
+}
+.cover h1 em {
+  color: var(--primary-colors--utility-blue);
+}
+.cover .sub {
+  font-size: 22px; font-weight: 500; line-height: 1.4;
+  color: var(--tertiary-colors--medium-gray);
+  max-width: 720px;
+}
+.cover .meta {
+  display: flex; gap: 48px; margin-top: 40px;
+  flex-wrap: wrap;
+}
+.cover .meta .cell label {
+  display: block;
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  color: var(--tertiary-colors--medium-gray);
+  letter-spacing: .1em; margin-bottom: 6px;
+}
+.cover .meta .cell span {
+  font-size: 16px; font-weight: 700;
+  color: var(--secondary-colors--licorice);
+}
+
+/* ------------------------------------------------------------------ */
+/* Section headings                                                    */
+/* ------------------------------------------------------------------ */
+.section-head {
+  margin-bottom: 32px;
+}
+.section-head .kicker {
+  font-size: 12px; font-weight: 800; letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--secondary-colors--leaf-green);
+  margin-bottom: 10px;
+}
+.section-head h2 {
+  font-size: 44px; font-weight: 800; line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.section-head h2 em { color: var(--primary-colors--utility-blue); }
+.section-head p {
+  margin-top: 14px;
+  font-size: 18px; font-weight: 400; color: var(--tertiary-colors--medium-gray);
+  max-width: 780px; line-height: 1.55;
+}
+
+/* ------------------------------------------------------------------ */
+/* Headline metric cards                                               */
+/* ------------------------------------------------------------------ */
+.headline-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-bottom: 24px;
+}
+.headline-card {
+  border: 1px solid var(--tertiary-colors--gray);
+  border-radius: 20px;
+  padding: 28px 28px 26px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.headline-card.hero {
+  grid-column: span 3;
+  background: linear-gradient(135deg, #164a80 0%, #0f3660 100%);
+  border: none;
+  color: #fff;
+  padding: 36px 40px;
+}
+.headline-card.hero .label {
+  color: #9cc0e9;
+}
+.headline-card.hero .before-after .num { color: #fff; }
+.headline-card.hero .before-after .arrow { color: #9cff39; }
+.headline-card.hero .before-after .delta {
+  background: #73c421; color: #0f3660;
+}
+.headline-card.hero .blurb { color: #c7dbef; }
+.headline-card .label {
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--tertiary-colors--medium-gray);
+  margin-bottom: 18px;
+}
+.headline-card .before-after {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.headline-card .before-after .num {
+  font-size: 56px; font-weight: 900;
+  line-height: 1; color: var(--secondary-colors--licorice);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.headline-card.hero .before-after .num { font-size: 72px; }
+.headline-card .before-after .num.was {
+  color: var(--tertiary-colors--medium-gray);
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #f86751;
+  font-size: 36px;
+}
+.headline-card.hero .before-after .num.was { font-size: 48px; }
+.headline-card .before-after .arrow {
+  font-size: 28px; font-weight: 900;
+  color: var(--secondary-colors--leaf-green);
+}
+.headline-card .before-after .delta {
+  font-size: 11px; font-weight: 800; padding: 4px 10px;
+  border-radius: 100px;
+  background: #edf5e8;
+  color: var(--secondary-colors--leaf-green-dark);
+  letter-spacing: .04em;
+  align-self: center;
+}
+.headline-card .blurb {
+  margin-top: 16px;
+  font-size: 15px; color: var(--tertiary-colors--medium-gray);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------ */
+/* Status pill summary strip                                           */
+/* ------------------------------------------------------------------ */
+.status-strip {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 14px; margin: 32px 0 8px;
+}
+.status-strip .tile {
+  border: 1px solid var(--tertiary-colors--gray);
+  border-radius: 16px;
+  padding: 20px;
+  background: #fff;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.status-strip .tile .badge-dot {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--tertiary-colors--medium-gray);
+}
+.status-strip .tile .badge-dot::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--tertiary-colors--medium-gray);
+}
+.status-strip .tile.resolved  .badge-dot::before { background: var(--secondary-colors--leaf-green); }
+.status-strip .tile.accepted  .badge-dot::before { background: #ff8c42; }
+.status-strip .tile.wontfix   .badge-dot::before { background: var(--tertiary-colors--medium-gray); }
+.status-strip .tile.deferred  .badge-dot::before { background: var(--primary-colors--bright-cerulean); }
+.status-strip .tile.open      .badge-dot::before { background: var(--secondary-colors--coral); }
+
+.status-strip .tile.resolved  .badge-dot { color: var(--secondary-colors--leaf-green-dark); }
+.status-strip .tile.accepted  .badge-dot { color: #c5601e; }
+.status-strip .tile.deferred  .badge-dot { color: #1f7aa8; }
+.status-strip .tile.open      .badge-dot { color: #c53b2a; }
+
+.status-strip .tile .count {
+  font-size: 40px; font-weight: 900; line-height: 1;
+  color: var(--secondary-colors--licorice);
+  font-variant-numeric: tabular-nums;
+}
+.status-strip .tile .label {
+  font-size: 13px; color: var(--tertiary-colors--medium-gray);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------ */
+/* Wins grid                                                           */
+/* ------------------------------------------------------------------ */
+.wins-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+.wins-grid .win {
+  border: 1px solid var(--tertiary-colors--gray);
+  border-radius: 12px;
+  padding: 16px 18px;
+  background: #fff;
+}
+.wins-grid .win .line {
+  display: flex; align-items: baseline; gap: 8px;
+  font-variant-numeric: tabular-nums;
+}
+.wins-grid .win .was {
+  font-size: 22px; font-weight: 900;
+  color: var(--tertiary-colors--medium-gray);
+  text-decoration: line-through;
+  text-decoration-color: #f86751;
+}
+.wins-grid .win .arrow {
+  color: var(--tertiary-colors--gray); font-weight: 800;
+}
+.wins-grid .win .now {
+  font-size: 28px; font-weight: 900;
+  color: var(--secondary-colors--leaf-green);
+}
+.wins-grid .win .title {
+  font-size: 13px; font-weight: 600;
+  color: var(--tertiary-colors--medium-gray);
+  margin-top: 4px; line-height: 1.4;
+}
+
+/* ------------------------------------------------------------------ */
+/* Narrative blocks                                                    */
+/* ------------------------------------------------------------------ */
+.narrative {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px;
+  margin-top: 48px;
+}
+.narrative h3 {
+  font-size: 22px; font-weight: 900;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+  color: var(--secondary-colors--licorice);
+}
+.narrative p {
+  font-size: 16px; line-height: 1.7;
+  color: var(--secondary-colors--licorice);
+}
+.narrative p + p { margin-top: 12px; }
+.narrative ol { padding-left: 22px; }
+.narrative ol li {
+  font-size: 16px; line-height: 1.7; margin-bottom: 8px;
+}
+.narrative ol li strong {
+  color: var(--primary-colors--utility-blue);
+}
+
+/* ------------------------------------------------------------------ */
+/* Table of Contents                                                   */
+/* ------------------------------------------------------------------ */
+.toc {
+  background: var(--tertiary-colors--light-gray);
+  border-radius: 20px;
+  padding: 32px 36px;
+  margin-top: 48px;
+}
+.toc h3 {
+  font-size: 14px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .14em;
+  color: var(--tertiary-colors--medium-gray);
+  margin-bottom: 20px;
+}
+.toc-group { margin-bottom: 22px; }
+.toc-group:last-child { margin-bottom: 0; }
+.toc-group .title {
+  font-size: 13px; font-weight: 900;
+  color: var(--primary-colors--utility-blue);
+  text-transform: uppercase; letter-spacing: .1em;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.toc-group .title .chip {
+  background: var(--primary-colors--utility-blue);
+  color: #fff; padding: 2px 8px; border-radius: 100px;
+  font-size: 11px; font-weight: 800; letter-spacing: .06em;
+}
+.toc-group ul {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;
+}
+.toc-group li a {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--secondary-colors--licorice);
+  padding: 6px 0;
+  font-weight: 500;
+  transition: color .15s;
+}
+.toc-group li a:hover { color: var(--secondary-colors--leaf-green); }
+.toc-group li a .st {
+  flex-shrink: 0; width: 16px; height: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 4px; font-size: 10px; font-weight: 900;
+}
+.toc-group li a .st.resolved  { background: #edf5e8; color: var(--secondary-colors--leaf-green-dark); }
+.toc-group li a .st.accepted  { background: #fff0e1; color: #c5601e; }
+.toc-group li a .st.wontfix   { background: #f0f1f3; color: var(--tertiary-colors--medium-gray); }
+.toc-group li a .st.deferred  { background: #e5f3fa; color: #1f7aa8; }
+.toc-group li a .st.open      { background: #fde8e4; color: #c53b2a; }
+
+/* ------------------------------------------------------------------ */
+/* Issue detail entries                                                */
+/* ------------------------------------------------------------------ */
+.issue {
+  padding: 40px 0;
+  border-top: 1px solid var(--tertiary-colors--gray);
+}
+.issue:first-of-type { border-top: none; }
+.issue-head {
+  display: flex; align-items: flex-start; gap: 24px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+.issue-num {
+  font-size: 14px; font-weight: 900;
+  color: var(--tertiary-colors--medium-gray);
+  font-variant-numeric: tabular-nums;
+  padding-top: 4px;
+  min-width: 36px;
+}
+.issue-title-wrap { flex: 1; min-width: 300px; }
+.issue h3 {
+  font-size: 28px; font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: var(--secondary-colors--licorice);
+}
+.issue-meta {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 14px;
+}
+.sev, .status-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px; font-weight: 800;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+.sev.error    { background: #fde8e4; color: #c53b2a; }
+.sev.warning  { background: #fff5d1; color: #a87a00; }
+.sev.notice   { background: #e5f3fa; color: #1f7aa8; }
+.sev.cascade  { background: #f5e8fd; color: #7d2dbf; }
+.sev.cleanup  { background: #edf5e8; color: var(--secondary-colors--leaf-green-dark); }
+
+.sev::before, .status-pill .dot {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; opacity: .65;
+}
+.status-pill {
+  border: 1.5px solid currentColor;
+  background: #fff;
+}
+.status-pill.resolved { color: var(--secondary-colors--leaf-green-dark); background: #edf5e8; border-color: #c6e4a8; }
+.status-pill.accepted { color: #c5601e; background: #fff0e1; border-color: #ffcb9a; }
+.status-pill.wontfix  { color: var(--tertiary-colors--medium-gray); background: #f0f1f3; border-color: var(--tertiary-colors--gray); }
+.status-pill.deferred { color: #1f7aa8; background: #e5f3fa; border-color: #b5dcef; }
+.status-pill.open     { color: #c53b2a; background: #fde8e4; border-color: #f5b8ae; }
+
+.about {
+  font-size: 14px; color: var(--tertiary-colors--medium-gray);
+  line-height: 1.6;
+  border-left: 2px solid var(--tertiary-colors--gray);
+  padding: 2px 0 2px 16px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  max-width: 820px;
+}
+.about strong {
+  color: var(--secondary-colors--licorice);
+  font-weight: 800;
+}
+.resolution p {
+  font-size: 16px; line-height: 1.75;
+  color: var(--secondary-colors--licorice);
+  max-width: 820px;
+}
+.resolution p + p { margin-top: 14px; }
+.resolution a.xref {
+  color: var(--secondary-colors--leaf-green);
+  font-weight: 700;
+  border-bottom: 1px dashed currentColor;
+}
+.resolution a.xref:hover { color: var(--secondary-colors--leaf-green-dark); }
+
+.callout {
+  margin-top: 20px;
+  border: 1px solid #ffcb9a;
+  background: #fff8f0;
+  border-radius: 16px;
+  padding: 20px 24px;
+  max-width: 820px;
+  position: relative;
+}
+.callout .ctitle {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 900; text-transform: uppercase;
+  letter-spacing: .14em;
+  color: #c5601e;
+  margin-bottom: 10px;
+}
+.callout .ctitle::before {
+  content: ""; width: 18px; height: 18px; border-radius: 4px;
+  background: #ff8c42;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: white; font-size: 12px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M12 1l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z'/></svg>");
+  background-size: 14px 14px; background-repeat: no-repeat; background-position: center;
+}
+.callout p {
+  font-size: 15px; line-height: 1.7;
+  color: var(--secondary-colors--licorice);
+}
+
+.callout.cascade {
+  border-color: #d9b3ef;
+  background: #faf2ff;
+}
+.callout.cascade .ctitle { color: #7d2dbf; }
+.callout.cascade .ctitle::before {
+  background: #9a4cd6;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M4 4h4v4H4zM10 10h4v4h-4zM16 16h4v4h-4zM8 6h2v4H8zM14 12h2v4h-2z'/></svg>");
+}
+
+/* Footer */
+footer.colophon {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--tertiary-colors--gray);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 20px;
+  font-size: 13px; color: var(--tertiary-colors--medium-gray);
+}
+footer.colophon .brand { display: flex; align-items: center; gap: 10px; }
+footer.colophon .brand img { height: 22px; }
+
+/* Proactive cleanup section */
+.cleanup-list {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  margin-top: 24px;
+}
+.cleanup-item {
+  border: 1px solid var(--tertiary-colors--gray);
+  border-radius: 16px;
+  padding: 22px 24px;
+  background: #fff;
+}
+.cleanup-item h4 {
+  font-size: 17px; font-weight: 800;
+  color: var(--secondary-colors--licorice);
+  margin: 0 0 8px;
+  display: flex; align-items: center; gap: 10px;
+}
+.cleanup-item h4 .count {
+  font-size: 11px; padding: 3px 10px; border-radius: 100px;
+  background: var(--tertiary--leaf-pastel);
+  color: var(--secondary-colors--leaf-green-dark);
+  font-weight: 900; letter-spacing: .04em;
+}
+.cleanup-item p {
+  font-size: 14px; line-height: 1.6;
+  color: var(--tertiary-colors--medium-gray);
+  margin: 0;
+}
+
+/* What's next */
+.next-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-top: 24px;
+}
+.next-item {
+  border: 1px solid var(--tertiary-colors--gray);
+  border-radius: 16px;
+  padding: 22px;
+  background: #fff;
+}
+.next-item .tag {
+  display: inline-flex; font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .1em;
+  padding: 3px 10px; border-radius: 100px;
+  background: #e5f3fa; color: #1f7aa8;
+  margin-bottom: 10px;
+}
+.next-item h4 {
+  font-size: 16px; font-weight: 800; margin: 0 0 6px;
+  color: var(--secondary-colors--licorice);
+}
+.next-item p {
+  font-size: 13.5px; line-height: 1.55;
+  color: var(--tertiary-colors--medium-gray); margin: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .page { padding: 24px; }
+  .cover h1 { font-size: 44px; }
+  .cover .sub { font-size: 18px; }
+  .section-head h2 { font-size: 32px; }
+  .headline-grid { grid-template-columns: 1fr; }
+  .headline-card.hero { grid-column: span 1; }
+  .status-strip { grid-template-columns: repeat(2, 1fr); }
+  .wins-grid { grid-template-columns: 1fr 1fr; }
+  .narrative { grid-template-columns: 1fr; gap: 32px; }
+  .toc-group ul { grid-template-columns: 1fr; }
+  .cleanup-list, .next-grid { grid-template-columns: 1fr; }
+  .topbar nav { display: none; }
+  .topbar-inner { padding: 12px 20px; }
+  .issue h3 { font-size: 22px; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Print                                                               */
+/* ------------------------------------------------------------------ */
+@media print {
+  .topbar, footer.colophon { display: none; }
+  body { font-size: 11pt; }
+  .page { max-width: none; padding: 0 .4in; }
+  .cover h1 { font-size: 34pt; }
+  .headline-card.hero { background: #164a80 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .issue { page-break-inside: avoid; padding: 22px 0; }
+  .callout { page-break-inside: avoid; }
+  .section-head h2 { font-size: 22pt; }
+  a.xref { color: var(--secondary-colors--leaf-green-dark); }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ------------------------------------------------------------- -->
+<!-- STICKY PROGRESS BAR                                            -->
+<!-- ------------------------------------------------------------- -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="assets/logo-horizontal.svg" alt="Move Concierge" />
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <span>Errors</span>
+      <span class="num">9</span>
+      <span class="arrow">→</span>
+      <span class="num new">0</span>
+    </div>
+    <div class="stat">
+      <span>Sitemap URLs</span>
+      <span class="num">235</span>
+      <span class="arrow">→</span>
+      <span class="num new">72</span>
+    </div>
+    <div class="spacer"></div>
+    <nav>
+      <a href="#summary">Summary</a>
+      <a href="#toc">Issues</a>
+      <a href="#cleanup">Proactive</a>
+      <a href="#whats-next">What's next</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<!-- ============================================================= -->
+<!-- COVER                                                          -->
+<!-- ============================================================= -->
+<section class="cover">
+  <div class="eyebrow">
+    <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#73c421"/></svg>
+    Internal report · Move Concierge · Marketing
+  </div>
+  <h1>SEO Audit Resolution Report<br/><em>April 2 → April 23, 2026.</em></h1>
+  <p class="sub">Three weeks. Three Semrush audits. Every baseline Error cleared, the sitemap trimmed by two-thirds, and a clear audit trail of the judgment calls made along the way.</p>
+  <div class="meta">
+    <div class="cell"><label>Prepared by</label><span>Marvin · Marketing</span></div>
+    <div class="cell"><label>For</label><span>Leadership review</span></div>
+    <div class="cell"><label>Report date</label><span>April 23, 2026</span></div>
+    <div class="cell"><label>Site</label><span>moveconcierge.com</span></div>
+    <div class="cell"><label>Platform</label><span>Webflow</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- EXECUTIVE SUMMARY                                              -->
+<!-- ============================================================= -->
+<section id="summary">
+  <div class="section-head">
+    <div class="kicker">Part 1 · Executive summary</div>
+    <h2>Every baseline <em>Error</em> cleared. The sitemap is two-thirds smaller.</h2>
+    <p>Three audits bookend this work: a baseline on April 2, a mid-point snapshot on April 22 that captured cascade issues caused by the first round of fixes, and a current-state audit on April 23 that verifies where we landed. The headline numbers below are drawn from that April 23 audit.</p>
+  </div>
+
+  <!-- Headline metrics -->
+  <div class="headline-grid">
+    <div class="headline-card hero">
+      <div class="label">Errors — the highest-severity Semrush findings</div>
+      <div class="before-after">
+        <span class="num was">9</span>
+        <span class="arrow">→</span>
+        <span class="num">0</span>
+        <span class="delta">100% cleared</span>
+      </div>
+      <p class="blurb">Every single baseline Error — duplicate meta descriptions, a broken internal link, a malformed href, and six related findings — is resolved in the April 23 audit.</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">Total flagged issues</div>
+      <div class="before-after">
+        <span class="num was">~475</span>
+        <span class="arrow">→</span>
+        <span class="num">~335</span>
+        <span class="delta">~30% fewer</span>
+      </div>
+      <p class="blurb">Across Errors, Warnings and Notices. Much of the remaining volume is deliberate noise (low text-HTML ratio, nofollow social links) that we've chosen not to chase.</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">URLs in sitemap</div>
+      <div class="before-after">
+        <span class="num was">~235</span>
+        <span class="arrow">→</span>
+        <span class="num">72</span>
+        <span class="delta">~66% smaller</span>
+      </div>
+      <p class="blurb">Bulk noindex of 146 team bios, 8 paid-acquisition landing pages, and utility/funnel pages. A tighter, higher-quality crawl surface for Google.</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">Unminified JS / CSS files</div>
+      <div class="before-after">
+        <span class="num was">72</span>
+        <span class="arrow">→</span>
+        <span class="num">2</span>
+        <span class="delta">97% reduction</span>
+      </div>
+      <p class="blurb">Single Webflow toggle. The two remaining files are third-party scripts outside Webflow's control.</p>
+    </div>
+  </div>
+
+  <!-- Status counts -->
+  <div class="status-strip">
+    <div class="tile resolved">
+      <div class="badge-dot">Resolved</div>
+      <div class="count">14</div>
+      <div class="label">Directly fixed</div>
+    </div>
+    <div class="tile accepted">
+      <div class="badge-dot">Accepted</div>
+      <div class="count">2</div>
+      <div class="label">Deliberate trade-off</div>
+    </div>
+    <div class="tile wontfix">
+      <div class="badge-dot">Won't fix</div>
+      <div class="count">3</div>
+      <div class="label">Explained non-action</div>
+    </div>
+    <div class="tile deferred">
+      <div class="badge-dot">Deferred</div>
+      <div class="count">7</div>
+      <div class="label">Sequenced for later</div>
+    </div>
+    <div class="tile open">
+      <div class="badge-dot">Still open</div>
+      <div class="count">2</div>
+      <div class="label">Tracked</div>
+    </div>
+  </div>
+
+  <!-- Confirmed wins -->
+  <div class="section-head" style="margin-top:56px;margin-bottom:16px;">
+    <div class="kicker">Confirmed issue-level wins</div>
+    <h2 style="font-size:30px;">Before / after, verified in the April 23 audit.</h2>
+  </div>
+  <div class="wins-grid">
+    <div class="win">
+      <div class="line"><span class="was">48</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Blog posts missing an H1</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">72</span><span class="arrow">→</span><span class="now">2</span></div>
+      <div class="title">Unminified JS / CSS files</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">10</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Pages with multiple H1 tags</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">3</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Duplicate meta descriptions</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">2</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Pages returning 4xx</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">2</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Duplicate title tags</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">1</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Broken internal link</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">8</span><span class="arrow">→</span><span class="now">1</span></div>
+      <div class="title">Permanent redirect URLs</div>
+    </div>
+  </div>
+
+  <!-- Narrative: top wins + top trade-offs -->
+  <div class="narrative">
+    <div>
+      <h3>Top wins</h3>
+      <p><strong>1 · All 9 baseline Errors cleared.</strong> The three duplicate meta descriptions are now unique. The two broken-link issues in the California retirement blog post (one real broken link, one malformed href that was producing a second 404) are fixed. And the follow-on 4xx and redirect-chain flags from the Sajag Patel cleanup have both dropped to zero.</p>
+      <p><strong>2 · A single template fix resolved 48 missing-H1 warnings at once.</strong> Adding an H1 binding at the Blog Template level — bound to each post's CMS Name field — cleared every flagged blog post in one change. It also taught us something (see the trade-offs column).</p>
+      <p><strong>3 · The sitemap went from a sprawling 235 URLs to a deliberate 72.</strong> Bulk-noindexing 146 of 151 team member bios, 8 paid-acquisition landing pages, and seven utility/funnel pages gave Google a crawl surface that reflects what we actually want ranking — and the refined sitemap was submitted to Google Search Console <em>for the first time</em> as part of this cycle, unlocking the Coverage and Performance reports for ongoing measurement.</p>
+      <p><strong>4 · Webflow's one-click minify toggle resolved 70 of 72 unminified-asset flags.</strong> Trivial configuration change, major Semrush-visible improvement.</p>
+      <p><strong>5 · The Lorem Ipsum component visible to real visitors is gone.</strong> Deleted from the Services Template — all 9 service pages no longer render placeholder copy that was hurting professionalism signals.</p>
+    </div>
+    <div>
+      <h3>Trade-offs worth flagging</h3>
+      <p><strong>Long titles accepted to kill a duplicate-H1/title cascade.</strong> The April 21 H1 fix caused H1 and title to read identically on 49 blog posts. We judged a duplicate-H1/title flag to be the more serious SEO issue and re-added the <code>" | Move Concierge"</code> suffix to the title tag — differentiating the two at the cost of some titles now exceeding 70 characters. Google truncates in SERPs but doesn't penalise ranking.</p>
+      <p><strong>Four incomplete service pages noindex'd rather than drafted.</strong> Setting them to Draft would have broken the home page Services grid. Toggling Sitemap Indexing off keeps the UX intact while excluding them from search until real content lands.</p>
+      <p><strong>"Low text-HTML ratio" classified as Won't Fix.</strong> It's a 2010s-era Semrush heuristic, not a Google ranking signal. Core Web Vitals pass on desktop and mobile — real user performance is good, the flag is informational noise.</p>
+    </div>
+  </div>
+
+  <!-- What's next -->
+  <div id="whats-next" class="section-head" style="margin-top:72px;margin-bottom:16px;">
+    <div class="kicker">Still on the board</div>
+    <h2 style="font-size:30px;">What's next.</h2>
+  </div>
+  <div class="next-grid">
+    <div class="next-item">
+      <div class="tag">Content work</div>
+      <h4>Descriptive anchor text</h4>
+      <p>26 internal/external links still read "click here" / "learn more." Requires visible copy changes — tracked but not yet scheduled.</p>
+    </div>
+    <div class="next-item">
+      <div class="tag">Template work</div>
+      <h4>Author-avatar conditional</h4>
+      <p>42 of 49 blog posts have null author refs, causing Webflow's CDN placeholder to serve 403s to Semrush's crawler. No Googlebot impact, but a template-level conditional would clean the Notices.</p>
+    </div>
+    <div class="next-item">
+      <div class="tag">Sequencing</div>
+      <h4>Re-enable service pages</h4>
+      <p>The 4 noindex'd service pages flip back on per-item as real content (hero, intro, info cards, CTAs) ships for each one.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- TABLE OF CONTENTS                                              -->
+<!-- ============================================================= -->
+<section id="toc">
+  <div class="section-head">
+    <div class="kicker">Part 2 · Issue-by-issue detail</div>
+    <h2>Every item flagged in the <em>April 2 baseline</em>, plus the cascade issues.</h2>
+    <p>Each detail page below carries the same Semrush wording, a severity pill, and a status badge. Entries are grouped by severity. Jump to any issue from the index.</p>
+  </div>
+
+  <div class="toc">
+    <h3>Index</h3>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">3</span> Errors (April 2 baseline)</div>
+      <ul>
+        <li><a href="#i-dup-meta"><span class="st resolved">✓</span>3 pages have duplicate meta descriptions</a></li>
+        <li><a href="#i-broken-internal"><span class="st resolved">✓</span>1 internal link is broken</a></li>
+        <li><a href="#i-uncrawlable"><span class="st resolved">✓</span>1 link couldn't be crawled (format)</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">5</span> Warnings (April 2 baseline)</div>
+      <ul>
+        <li><a href="#i-missing-meta"><span class="st resolved">✓</span>1 page doesn't have a meta description</a></li>
+        <li><a href="#i-missing-h1"><span class="st resolved">✓</span>48 pages don't have an H1</a></li>
+        <li><a href="#i-long-titles"><span class="st accepted">◆</span>21 pages have too much text in titles</a></li>
+        <li><a href="#i-multi-h1"><span class="st resolved">✓</span>10 pages have more than one H1</a></li>
+        <li><a href="#i-robots-sitemap"><span class="st resolved">✓</span>Sitemap.xml not indicated in robots.txt</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">8</span> New / cascade issues (April 22)</div>
+      <ul>
+        <li><a href="#i-4xx"><span class="st resolved">✓</span>1 page returned a 4xx status code</a></li>
+        <li><a href="#i-redirect-chain"><span class="st resolved">✓</span>1 redirect chain or loop</a></li>
+        <li><a href="#i-minify"><span class="st resolved">✓</span>72 unminified JS / CSS issues</a></li>
+        <li><a href="#i-text-html"><span class="st wontfix">✕</span>69 pages have low text-HTML ratio</a></li>
+        <li><a href="#i-dup-h1-title"><span class="st resolved">✓</span>49 pages have duplicate H1 and title tags</a></li>
+        <li><a href="#i-long-titles-v2"><span class="st accepted">◆</span>9 pages have too much text in titles (v2)</a></li>
+        <li><a href="#i-low-words"><span class="st deferred">•</span>5 pages have a low word count</a></li>
+        <li><a href="#i-missing-h1-svc"><span class="st resolved">✓</span>4 pages don't have an H1 (service pages)</a></li>
+        <li><a href="#i-ext-broken"><span class="st resolved">✓</span>1 external link is broken</a></li>
+        <li><a href="#i-sitemap-404"><span class="st wontfix">✕</span>Sitemap.xml not found (false positive)</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">7</span> Notices</div>
+      <ul>
+        <li><a href="#i-nofollow"><span class="st wontfix">✕</span>140 external links contain nofollow</a></li>
+        <li><a href="#i-403"><span class="st deferred">•</span>61 external links returned 403</a></li>
+        <li><a href="#i-anchor-text"><span class="st open">!</span>26 links have non-descriptive anchor text</a></li>
+        <li><a href="#i-perm-redirects"><span class="st deferred">•</span>7 URLs with a permanent redirect</a></li>
+        <li><a href="#i-one-internal"><span class="st deferred">•</span>2 pages have only one incoming internal link</a></li>
+        <li><a href="#i-content-opt"><span class="st deferred">•</span>2 pages require content optimization</a></li>
+        <li><a href="#i-llms"><span class="st deferred">•</span>Llms.txt not found</a></li>
+        <li><a href="#i-empty-anchor"><span class="st open">!</span>1 link on this page has no anchor text</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- ISSUE DETAIL PAGES                                             -->
+<!-- ============================================================= -->
+<section id="issues" style="margin-top: 64px;">
+
+<!-- ========= ERRORS ========= -->
+
+<article class="issue" id="i-dup-meta">
+  <div class="issue-head">
+    <div class="issue-num">E.01</div>
+    <div class="issue-title-wrap">
+      <h3>3 pages have duplicate meta descriptions</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush flags pages that share the same meta description. Duplicate descriptions make it harder for Google to differentiate pages in SERPs and often result in Google choosing its own snippet instead of yours.
+  </div>
+  <div class="resolution">
+    <p>Gave each of the three flagged static pages a unique, page-specific meta description. Unique descriptions are the baseline expectation for crawlable pages — they improve click-through rate and prevent Google from substituting its own snippet. Verified clear in the April 23 audit.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-broken-internal">
+  <div class="issue-head">
+    <div class="issue-num">E.02</div>
+    <div class="issue-title-wrap">
+      <h3>1 internal link is broken</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> An internal link points to a URL that returns a 4xx error. Broken internal links waste crawl budget, hurt user trust, and are a direct signal of site neglect.
+  </div>
+  <div class="resolution">
+    <p>Identified the broken link in a California retirement blog post and removed/replaced it. Same post contained the malformed href below, so both were addressed in the same pass.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-uncrawlable">
+  <div class="issue-head">
+    <div class="issue-num">E.03</div>
+    <div class="issue-title-wrap">
+      <h3>1 link couldn't be crawled (incorrect URL format)</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> A link's <code>href</code> value was not a valid URL — crawlers can't resolve it and it produces a 404 for anyone who clicks.
+  </div>
+  <div class="resolution">
+    <p>Fixed a malformed <code>&lt;a&gt;</code> tag in the same California retirement blog post, where the <code>href</code> value was a sentence fragment rather than a URL. This was producing a second 404 on the same page and confusing crawlers that were trying to resolve it as a relative path.</p>
+  </div>
+</article>
+
+<!-- ========= WARNINGS ========= -->
+
+<article class="issue" id="i-missing-meta">
+  <div class="issue-head">
+    <div class="issue-num">W.01</div>
+    <div class="issue-title-wrap">
+      <h3>1 page doesn't have a meta description</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> A page has no meta description, so Google auto-generates one from on-page text.
+  </div>
+  <div class="resolution">
+    <p>Added a unique meta description to the <code>/plan-and-price</code> page.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-missing-h1">
+  <div class="issue-head">
+    <div class="issue-num">W.02</div>
+    <div class="issue-title-wrap">
+      <h3>48 pages don't have an H1 heading</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+        <span class="sev cascade">Caused a cascade</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> H1 is the primary topical signal for a page. Missing H1s on 48 blog posts meant Google had to infer topic from the title tag and body copy alone.
+  </div>
+  <div class="resolution">
+    <p>Added an H1 at the <strong>Blog Template</strong> level, bound to each post's Name/Title CMS field. This template-level fix resolved all 48 flagged pages in a single change — every blog post now renders an H1 that matches its post title.</p>
+    <p>The fix shipped on April 21 and cleared this specific warning, but it surfaced a new one in the April 22 audit that's worth reading in tandem: because the title tag was <em>also</em> bound to the post name (without the brand suffix), H1 and title now rendered identical text on every post. See <a class="xref" href="#i-dup-h1-title">49 pages have duplicate H1 and title tags</a> for the full cascade narrative and how it was resolved.</p>
+  </div>
+
+  <div class="callout cascade">
+    <div class="ctitle">Cascade</div>
+    <p>One template change resolved 48 missing-H1 warnings in a single action, but created 49 duplicate-H1/title warnings downstream. The resolution of the downstream issue (re-adding the brand suffix to the title tag) is documented in E.04 / W.06 equivalents — the trade-off for the fix was accepting longer title tags on some posts.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-long-titles">
+  <div class="issue-head">
+    <div class="issue-num">W.03</div>
+    <div class="issue-title-wrap">
+      <h3>21 pages have too much text within the title tags</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill accepted">⚖️ Accepted</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush flags title tags over 70 characters. Google truncates titles at roughly that length in SERPs but still considers the full text for ranking.
+  </div>
+  <div class="resolution">
+    <p>This issue had an unusual resolution path. The initial fix on April 21 stripped the <code>" | Move Concierge"</code> brand suffix from the Blog Template's SEO title binding, which brought 18 of the 28 flagged titles under the 70-character threshold. However, this fix had an unintended side effect: because the H1 was bound to the post name and the title tag was also bound to the post name (now without the suffix), all blog posts began rendering identical H1 and title text — which Semrush then flagged as <a class="xref" href="#i-dup-h1-title">49 pages have duplicate H1 and title tags</a> in the April 22 audit.</p>
+    <p>With Guy's guidance we judged that the duplicate H1/title flag was a higher-priority SEO concern than the title-length warning, and that the quickest route to resolution was to re-add the <code>" | Move Concierge"</code> suffix to the title tag. This textually differentiates the title from the H1 (matching Google's "same topic, different text" guidance) while accepting that some blog post titles will now exceed 70 characters. Google does not materially penalize over-length titles — it truncates them in SERPs but still considers the full text for ranking.</p>
+  </div>
+  <div class="callout">
+    <div class="ctitle">Decision</div>
+    <p>Better to have clearly distinct title/H1 pairs than perfectly-length-optimized duplicate ones. Taken deliberately: ranking guidance from Google points to topical alignment with lexical difference, which is exactly what the suffix restores. The truncation is a display concession, not a ranking concession.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-multi-h1">
+  <div class="issue-head">
+    <div class="issue-num">W.04</div>
+    <div class="issue-title-wrap">
+      <h3>10 pages have more than one H1 tag</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Best practice (and Google's recommendation) is one H1 per page. Multiple H1s dilute the topical signal.
+  </div>
+  <div class="resolution">
+    <p>Reduced to a single H1 per affected page on Home, <code>/partners</code>, the Services Template, MC Academy, and Privacy Policy. Other headings were demoted to H2. Matches W3C and Google's recommendation of one H1 per page.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-robots-sitemap">
+  <div class="issue-head">
+    <div class="issue-num">W.05</div>
+    <div class="issue-title-wrap">
+      <h3>Sitemap.xml not indicated in robots.txt</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> robots.txt should contain a <code>Sitemap:</code> directive so crawlers can discover the sitemap without guessing its location.
+  </div>
+  <div class="resolution">
+    <p>This item was initially classified as blocked — we assumed editing robots.txt via Webflow required an Enterprise plan. That assumption turned out to be wrong, and the flag cleared on the April 23 audit through two related actions:</p>
+    <ol>
+      <li><strong>Enabling Webflow's auto-generated sitemap.</strong> Marvin toggled on the auto-generate sitemap setting in Site Settings. When sitemap generation is on, Webflow automatically includes a <code>Sitemap:</code> directive in its auto-generated robots.txt — no Enterprise access required. This is useful learning: the "BLOCKED" assumption was wrong, and similar "needs Enterprise" claims should be verified before being treated as blockers.</li>
+      <li><strong>Submitting the sitemap to Google Search Console for the first time.</strong> No prior SEO engagement had ever submitted this site's sitemap to GSC. Done as part of this cycle, which also contributed to clearing the flag and — more importantly — unlocks the Coverage and Performance reports for ongoing measurement.</li>
+    </ol>
+  </div>
+  <div class="callout">
+    <div class="ctitle">Takeaway</div>
+    <p>Webflow auto-manages robots.txt sitemap directives on non-Enterprise plans when sitemap generation is on. Future "needs Enterprise" assumptions should be tested before being treated as blockers.</p>
+  </div>
+</article>
+
+<!-- ========= APR 22 NEW / CASCADE ========= -->
+
+<article class="issue" id="i-4xx">
+  <div class="issue-head">
+    <div class="issue-num">N.01</div>
+    <div class="issue-title-wrap">
+      <h3>1 page returned a 4xx status code</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> A page on the site returns a 4xx (usually 404) — either a real broken URL or a URL that's still being linked after it was removed.
+  </div>
+  <div class="resolution">
+    <p>Most likely the <code>/team/sajag-patel</code> URL. Initially a 301 redirect to <code>/about</code> was implemented on April 21, but on April 22 the team decided to clean up completely: removed the remaining internal link from the "Fine Times" blog post and deleted the 301 redirect. The URL now cleanly 404s rather than redirecting — which is semantically correct for a deleted page with no referring internal links.</p>
+    <p>Confirmed in the April 23 audit: 4xx status code count dropped from 2 → 0.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-redirect-chain">
+  <div class="issue-head">
+    <div class="issue-num">N.02</div>
+    <div class="issue-title-wrap">
+      <h3>1 redirect chain or loop</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> A URL goes through more than one redirect before reaching its final destination, or the redirects cycle.
+  </div>
+  <div class="resolution">
+    <p>Also likely related to the Sajag redirect cleanup. Confirmed in the April 23 audit: issue cleared.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-minify">
+  <div class="issue-head">
+    <div class="issue-num">N.03</div>
+    <div class="issue-title-wrap">
+      <h3>72 issues with unminified JavaScript and CSS files</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> JS/CSS served without minification wastes bytes on every request.
+  </div>
+  <div class="resolution">
+    <p>Enabled Webflow's <em>Minify CSS</em> / <em>Minify JS</em> toggles in Site Settings → Publishing. Single-click change. PageSpeed Insights confirmed only ~2 KiB of JavaScript savings was actually available, but enabling minification is the correct default configuration regardless of the ceiling on savings.</p>
+    <p>The April 23 audit confirms 72 → 2 (97% reduction). The two remaining items are almost certainly third-party scripts not under Webflow's control.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-text-html">
+  <div class="issue-head">
+    <div class="issue-num">N.04</div>
+    <div class="issue-title-wrap">
+      <h3>69 pages have low text-HTML ratio</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill wontfix">🚫 Won't Fix</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush compares the character count of visible text against total HTML bytes; if text is under a threshold fraction of HTML, the page gets flagged.
+  </div>
+  <div class="resolution">
+    <p>This is a Webflow framework overhead issue, not a content quality issue. The flagged pages (including blog posts with 1,500+ words) contain substantive text, but Webflow's auto-generated HTML includes heavy framework markup — wrapper divs, data attributes, inline SVG icons, responsive-hidden duplicate markup — that inflates the denominator. A typical blog post has ~10–12 KB of text inside a ~250–300 KB rendered HTML page, which comes out to roughly a 4% ratio.</p>
+    <p>Text-to-HTML ratio is not a Google ranking signal — it's a Semrush heuristic carried over from early-2010s SEO — and the fix Semrush recommends ("split text and code into separate files") isn't applicable to Webflow-hosted sites. Core Web Vitals pass on both desktop and mobile per the April 22 PageSpeed Insights data: real user performance is good; this flag is informational noise.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-dup-h1-title">
+  <div class="issue-head">
+    <div class="issue-num">N.05</div>
+    <div class="issue-title-wrap">
+      <h3>49 pages have duplicate H1 and title tags</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="sev cascade">Cascade from W.02</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> When H1 and title tag render identical text, Google loses the "same topic, different words" signal — both elements should reinforce the same subject using different phrasing.
+  </div>
+  <div class="resolution">
+    <p>This was the cascade effect of the April 21 H1-addition fix (see <a class="xref" href="#i-missing-h1">W.02 · 48 pages don't have an H1</a>). Adding H1 bound to the post name, while the title tag was also bound to the post name (minus brand suffix), caused the two fields to render character-for-character identical text on every blog post.</p>
+    <p>Resolved on April 22 by re-adding the <code>" | Move Concierge"</code> brand suffix to the Blog Template title tag, which textually differentiates title from H1 while keeping them topically aligned. This matches Google's own guidance on title tags: reinforce the H1's topic with different text rather than duplicating it.</p>
+  </div>
+  <div class="callout cascade">
+    <div class="ctitle">Cascade narrative</div>
+    <p>Removing the brand suffix to shorten titles (W.03) caused H1 and title to render identically (this issue). Re-adding the suffix resolves this issue but re-introduces the length issue (now W.06 equivalent) on 9 posts. The net trade — accepted length warnings on 9 posts in exchange for clearing 49 duplicate-H1/title warnings — is a clear win.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-long-titles-v2">
+  <div class="issue-head">
+    <div class="issue-num">N.06</div>
+    <div class="issue-title-wrap">
+      <h3>9 pages have too much text within the title tags</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill accepted">⚖️ Accepted</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Same rule as W.03 — 9 remaining blog posts with particularly long names now exceed 70 characters once the brand suffix is re-added.
+  </div>
+  <div class="resolution">
+    <p>Same decision as the April 2 equivalent issue — accepted as the trade-off for clearing the H1/title duplication. 9 blog posts with particularly long names now have titles over 70 characters, but Google truncates display in SERPs without ranking penalty.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-low-words">
+  <div class="issue-head">
+    <div class="issue-num">N.07</div>
+    <div class="issue-title-wrap">
+      <h3>5 pages have a low word count</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush flags pages under 200 words.
+  </div>
+  <div class="resolution">
+    <p>The 5 flagged pages are <code>/contact</code> (165), <code>/media-inquiries</code> (97), <code>/partners-contact</code> (157), <code>/plan-and-price</code> (121), and one blog post (192). These are intentionally concise marketing and contact pages — adding filler content to hit 200 words would hurt UX more than help SEO.</p>
+    <p>The 200-word threshold is a Semrush heuristic, not a Google rule. Content expansion is a future consideration, not a priority fix.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-missing-h1-svc">
+  <div class="issue-head">
+    <div class="issue-num">N.08</div>
+    <div class="issue-title-wrap">
+      <h3>4 pages don't have an H1 heading (service pages)</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Four incomplete service pages (<code>/services/utility-support</code>, <code>/pest-control</code>, <code>/moving-services</code>, <code>/change-of-address</code>) are placeholder shells — only icon, description, name, and slug are populated; hero image, intro heading, info cards, and CTAs are all null.
+  </div>
+  <div class="resolution">
+    <p>Rather than setting them to Draft (which would create UX gaps on the home page Services Wrapper grid), we toggled Sitemap Indexing OFF on each CMS item. Pages remain accessible via URL but are noindex'd and excluded from the sitemap. Semrush should clear the flag on re-audit because the pages are now explicitly excluded from the discoverable site.</p>
+    <p>Plan: re-enable indexing per-item as each service page gets real content.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-ext-broken">
+  <div class="issue-head">
+    <div class="issue-num">N.09</div>
+    <div class="issue-title-wrap">
+      <h3>1 external link is broken</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> A link to an external site returned a 4xx.
+  </div>
+  <div class="resolution">
+    <p>Likely resolved as a side effect of the Sajag blog post cleanup or other link remediation. The April 23 audit confirms: 1 → 0.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-sitemap-404">
+  <div class="issue-head">
+    <div class="issue-num">N.10</div>
+    <div class="issue-title-wrap">
+      <h3>Sitemap.xml not found</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill wontfix">🚫 False positive</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush reported it could not fetch the sitemap.
+  </div>
+  <div class="resolution">
+    <p>Confirmed manually that <a class="xref" href="https://www.moveconcierge.com/sitemap.xml">https://www.moveconcierge.com/sitemap.xml</a> resolves and contains 72 URLs. Semrush's crawler appears to have hit a transient fetch error during the April 22 audit.</p>
+    <p>Subsequent GSC submission confirmed the sitemap processes successfully with 72 discovered pages. The April 23 audit confirms the issue cleared on its own.</p>
+  </div>
+</article>
+
+<!-- ========= NOTICES ========= -->
+
+<article class="issue" id="i-nofollow">
+  <div class="issue-head">
+    <div class="issue-num">L.01</div>
+    <div class="issue-title-wrap">
+      <h3>140 outgoing external links contain nofollow attributes</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill wontfix">🚫 Won't Fix</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush surfaces all external links using <code>rel="nofollow"</code>. It's a notice, not a problem — the point is to let an editor confirm nofollow was intentional.
+  </div>
+  <div class="resolution">
+    <p>Almost certainly intentional — social icons, external resources where passing link equity isn't appropriate. No action warranted.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-403">
+  <div class="issue-head">
+    <div class="issue-num">L.02</div>
+    <div class="issue-title-wrap">
+      <h3>61 links to external pages or resources returned a 403 HTTP status code</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush flags any external URL that returned 403 (Forbidden) during its crawl.
+  </div>
+  <div class="resolution">
+    <p>The majority of these trace back to Webflow's own CDN-hosted <code>placeholder.svg</code> asset, rendered on blog pages wherever the author avatar element has a null <code>author</code> reference (42 of 49 blog posts have null author refs). The flag has no SEO ranking impact — Googlebot isn't getting 403s, only Semrush's crawler is, because Webflow's CDN blocks Semrush's user agent on certain asset paths.</p>
+    <p>The permanent fix is a template-level change (conditional visibility on the author avatar element), which is being deferred since the issue is cosmetic rather than ranking-relevant.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-anchor-text">
+  <div class="issue-head">
+    <div class="issue-num">L.03</div>
+    <div class="issue-title-wrap">
+      <h3>26 links have non-descriptive anchor text</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill open">🔄 Still Open</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Anchor text like "click here" / "learn more" gives Google no topical context about the destination.
+  </div>
+  <div class="resolution">
+    <p>Real content work — requires changing visible anchor text on 26 internal or external links from "click here" / "learn more" style to descriptive text. Not yet prioritized but tracked.</p>
+    <p><em>Note:</em> an initial aria-label attempt was abandoned after confirming <code>aria-label</code> addresses WCAG accessibility but doesn't resolve the SEO anchor-text flag. The fix requires changing visible anchor text.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-perm-redirects">
+  <div class="issue-head">
+    <div class="issue-num">L.04</div>
+    <div class="issue-title-wrap">
+      <h3>7 URLs with a permanent redirect</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush counts any URL served via 301 as a notice — generally fine, but worth cleaning up if the chain is stale.
+  </div>
+  <div class="resolution">
+    <p>One redirect (<code>/team/sajag-patel</code> → <code>/about</code>) was deliberately deleted as part of the Sajag cleanup, reducing this count to ~6. Remaining redirects are not causing measurable crawl-budget issues.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-one-internal">
+  <div class="issue-head">
+    <div class="issue-num">L.05</div>
+    <div class="issue-title-wrap">
+      <h3>2 pages have only one incoming internal link</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages with few incoming internal links are harder for crawlers to discover and accrue less PageRank from within the site.
+  </div>
+  <div class="resolution">
+    <p>Minor — worth tactical internal linking improvements over time but not urgent.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-content-opt">
+  <div class="issue-head">
+    <div class="issue-num">L.06</div>
+    <div class="issue-title-wrap">
+      <h3>2 pages require content optimization</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush's generic "improve this content" flag.
+  </div>
+  <div class="resolution">
+    <p>Low urgency. No structural issue — just Semrush suggesting general improvements.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-llms">
+  <div class="issue-head">
+    <div class="issue-num">L.07</div>
+    <div class="issue-title-wrap">
+      <h3>Llms.txt not found</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> <code>llms.txt</code> is a proposed file for controlling how LLMs interact with your site, analogous to <code>robots.txt</code> for search engines.
+  </div>
+  <div class="resolution">
+    <p>Webflow supports uploading a custom <code>llms.txt</code> natively on the current plan. Deliberately deferred because as of October 2025, major LLM providers (OpenAI, Google, Perplexity, Anthropic) do not use <code>llms.txt</code> files in their training or retrieval pipelines. Creating one would be speculative future-proofing only.</p>
+    <p>May revisit when adoption increases.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-empty-anchor">
+  <div class="issue-head">
+    <div class="issue-num">L.08</div>
+    <div class="issue-title-wrap">
+      <h3>1 link on this page has no anchor text</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill open">🔄 Still Open</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> An <code>&lt;a&gt;</code> tag has no text content.
+  </div>
+  <div class="resolution">
+    <p>Single link with empty anchor. Trivial to fix but not yet identified.</p>
+  </div>
+</article>
+
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- PROACTIVE CLEANUP                                              -->
+<!-- ============================================================= -->
+<section id="cleanup">
+  <div class="section-head">
+    <div class="kicker">Beyond the audit findings</div>
+    <h2>Proactive cleanup <em>done alongside</em> the Semrush remediation.</h2>
+    <p>Several sitemap hygiene and content-quality improvements were made based on discussions during the audit cycle. These weren't flagged by Semrush but materially improve crawl quality and professionalism.</p>
+  </div>
+
+  <div class="cleanup-list">
+    <div class="cleanup-item">
+      <h4>Team member bulk noindex <span class="count">-145 URLs</span></h4>
+      <p>Individual team member bio pages are thin, template-driven content that doesn't serve search intent. Toggled Sitemap Indexing OFF on 146 of 151 non-leadership team CMS items; kept ON for 5 keepers (Gabe Abshire, Jason Lindwall, Kevin Hockenjos, Nate Ofe, Ryan Miner).</p>
+    </div>
+
+    <div class="cleanup-item">
+      <h4>Utility / funnel page exclusion <span class="count">-7 URLs</span></h4>
+      <p>Toggled Sitemap Indexing OFF on <code>/styleguide</code>, <code>/test</code>, <code>/thank-you</code>, <code>/success</code>, <code>/page-not-found</code>, <code>/schedule</code>, <code>/schedule-m</code>. Internal/funnel pages that should never appear in search results.</p>
+    </div>
+
+    <div class="cleanup-item">
+      <h4>Campaign landing page exclusion <span class="count">-8 URLs</span></h4>
+      <p>Toggled Sitemap Indexing OFF on all <code>/campaigns/dtc-*</code> items. Paid-acquisition landing pages should not compete with organic landing pages for the same search intent.</p>
+    </div>
+
+    <div class="cleanup-item">
+      <h4>Lorem Ipsum component removed <span class="count">9 pages</span></h4>
+      <p>Deleted the <em>Audo Sliding Panels</em> placeholder component instance from the Services Template. All 9 service pages no longer render Lorem Ipsum content. The original issue was visible to real visitors and hurt professionalism signals — arguably more important than any Semrush flag.</p>
+    </div>
+
+    <div class="cleanup-item">
+      <h4>Google Search Console sitemap submission <span class="count">first time</span></h4>
+      <p>Submitted the cleaned-up 72-URL sitemap to GSC. <strong>This is the first time the moveconcierge.com sitemap has ever been submitted to Search Console</strong> — no prior SEO work had established this baseline. Unlocks Coverage report (which URLs indexed), Performance report (real search impressions/clicks), and manual indexing requests.</p>
+    </div>
+
+    <div class="cleanup-item">
+      <h4>Webflow auto-sitemap enabled <span class="count">platform setting</span></h4>
+      <p>Turning on auto-generate sitemap also causes Webflow to auto-inject a <code>Sitemap:</code> directive into the platform-managed robots.txt. Side-effect resolved the robots.txt warning that was previously classified as blocked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- FOOTER                                                         -->
+<!-- ============================================================= -->
+<footer class="colophon">
+  <div class="brand">
+    <img src="assets/logo-horizontal.svg" alt="Move Concierge" />
+    <span>SEO Audit Resolution Report · April 23, 2026</span>
+  </div>
+  <div>Source audits: Semrush Site Audit · April 2, April 22, April 23, 2026</div>
+</footer>
+
+</main>
+
+</body>
+</html>
