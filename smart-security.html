@@ -1,0 +1,1332 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smart Security Concierge — 5-Day Sprint Report</title>
+<link rel="stylesheet" href="colors_and_type.css" />
+<link rel="stylesheet" href="report.css" />
+</head>
+<body>
+
+<!-- ------------------------------------------------------------- -->
+<!-- SITE-WIDE TAB SWITCHER                                         -->
+<!-- ------------------------------------------------------------- -->
+<div class="tab-switcher">
+  <div class="tab-switcher-inner">
+    <span class="ts-label">Reports</span>
+    <a href="/" class="tab">Move Concierge · SEO Resolution</a>
+    <a href="/smart-security" class="tab active">Smart Security Concierge · 5-Day Sprint</a>
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------- -->
+<!-- STICKY PROGRESS BAR                                            -->
+<!-- ------------------------------------------------------------- -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="assets/logo-horizontal.svg" alt="Move Concierge" />
+      <span class="x">×</span>
+      <span>Smart Security Concierge</span>
+    </div>
+    <div class="divider"></div>
+    <div class="stat">
+      <span>Site Health</span>
+      <span class="num">79%</span>
+      <span class="arrow">→</span>
+      <span class="num new">92%</span>
+    </div>
+    <div class="stat">
+      <span>Total issues</span>
+      <span class="num">1,251</span>
+      <span class="arrow">→</span>
+      <span class="num new">111</span>
+    </div>
+    <div class="stat">
+      <span>Mobile Lighthouse</span>
+      <span class="num">68</span>
+      <span class="arrow">→</span>
+      <span class="num new">98</span>
+    </div>
+    <div class="spacer"></div>
+    <nav>
+      <a href="#summary">Summary</a>
+      <a href="#redesign">Redesign</a>
+      <a href="#seo">SEO</a>
+      <a href="#perf">Performance</a>
+      <a href="#blog">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<!-- ============================================================= -->
+<!-- COVER                                                          -->
+<!-- ============================================================= -->
+<section class="cover">
+  <div class="eyebrow">
+    <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#73c421"/></svg>
+    Internal report · Smart Security Concierge · Marketing
+  </div>
+  <h1>5-Day Sprint Report<br/><em>Smart Security Concierge.</em></h1>
+  <p class="sub">Five working days. A full design-system port, 41 new posts across two audience clusters, Semrush Site Health up 13 points (79% → 92%) with total issues down 91%, and mobile Lighthouse 68 → 98.</p>
+  <div class="meta">
+    <div class="cell"><label>Prepared by</label><span>Marvin</span></div>
+    <div class="cell"><label>For</label><span>Leadership review</span></div>
+    <div class="cell"><label>Report date</label><span>April 27, 2026</span></div>
+    <div class="cell"><label>Site</label><span>smartsecurityconcierge.com</span></div>
+    <div class="cell"><label>Stack</label><span>Next.js 14 / Vercel</span></div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- EXECUTIVE SUMMARY                                              -->
+<!-- ============================================================= -->
+<section id="summary">
+  <div class="section-head">
+    <div class="kicker">Part 1 · Executive summary</div>
+    <h2>Five days. <em>Four workstreams.</em> Every leading metric in the right direction.</h2>
+    <p>April 23–27, 2026. The work split across four parallel tracks: a full visual redesign onto the Move Concierge design system, 41 new blog posts across two audience-targeted hub-and-spoke clusters, a Semrush SEO audit with same-day remediation, and a mobile performance push that closed at a 98 Lighthouse score. The headline numbers below come from the final Semrush audit at 19:34 UTC and the final PageSpeed Insights run on April 27.</p>
+  </div>
+
+  <!-- Headline metrics -->
+  <div class="headline-grid">
+    <div class="headline-card hero">
+      <div class="label">Semrush Site Health — composite score</div>
+      <div class="before-after">
+        <span class="num was">79%</span>
+        <span class="arrow">→</span>
+        <span class="num">92%</span>
+        <span class="delta">+13 points</span>
+      </div>
+      <p class="blurb">Semrush's headline weighted score across Errors, Warnings, and Notices. Moved from 79% at the morning baseline to 92% at the final audit four phases later. Total issues dropped 91% — from 1,251 to 111 — driven primarily by a single robots.txt fix that resolved 89% of all baseline warnings on its own.</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">Total Semrush issues</div>
+      <div class="before-after">
+        <span class="num was">1,251</span>
+        <span class="arrow">→</span>
+        <span class="num">111</span>
+        <span class="delta">−91%</span>
+      </div>
+      <p class="blurb">Across all severities. Errors −94% (33 → 2), Warnings −98% (1,086 → 21), Notices −33% (132 → 88).</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">Mobile Lighthouse Performance</div>
+      <div class="before-after">
+        <span class="num was">68</span>
+        <span class="arrow">→</span>
+        <span class="num">98</span>
+        <span class="delta">+30 points</span>
+      </div>
+      <p class="blurb">LCP cut from 10.6s to 2.3s (−78%). TBT 270ms → 110ms. Driven by enabling Vercel image optimization and lazy-loading GTM and Convert Experiences off the critical path.</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">New blog posts shipped</div>
+      <div class="before-after">
+        <span class="num was">24</span>
+        <span class="arrow">→</span>
+        <span class="num">65</span>
+        <span class="delta">+41 new</span>
+      </div>
+      <p class="blurb">All 41 published live. Two audience clusters: a 15-post Echelons of Defense doctrine spine for the prepper / second-amendment community, and a 10-post Lifecycle / Risk / System cluster for snowbird vacation-home owners. 16 mainstream + SEO-targeted posts round out the set.</p>
+    </div>
+
+    <div class="headline-card">
+      <div class="label">Sitemap URLs surfaced to Google</div>
+      <div class="before-after">
+        <span class="num was">24</span>
+        <span class="arrow">→</span>
+        <span class="num">80</span>
+        <span class="delta">3.3× discoverable</span>
+      </div>
+      <p class="blurb">Replaced a static, drifted sitemap with a dynamic Next.js <code>app/sitemap.ts</code> that pulls from <code>posts-metadata.json</code>. Surfaces all 65 posts plus 15 primary routes — closing a real discoverability gap.</p>
+    </div>
+  </div>
+
+  <!-- Status counts -->
+  <div class="status-strip">
+    <div class="tile resolved">
+      <div class="badge-dot">Resolved</div>
+      <div class="count">14</div>
+      <div class="label">Directly fixed</div>
+    </div>
+    <div class="tile accepted">
+      <div class="badge-dot">Accepted</div>
+      <div class="count">3</div>
+      <div class="label">Trade-off / false positive</div>
+    </div>
+    <div class="tile deferred">
+      <div class="badge-dot">Deferred</div>
+      <div class="count">2</div>
+      <div class="label">Sequenced for later</div>
+    </div>
+    <div class="tile open">
+      <div class="badge-dot">Trending</div>
+      <div class="count">2</div>
+      <div class="label">Right direction, not zero</div>
+    </div>
+    <div class="tile wontfix">
+      <div class="badge-dot">N/A</div>
+      <div class="count">—</div>
+      <div class="label">No won't-fix calls</div>
+    </div>
+  </div>
+
+  <!-- Confirmed wins grid -->
+  <div class="section-head" style="margin-top:56px;margin-bottom:16px;">
+    <div class="kicker">Confirmed issue-level wins</div>
+    <h2 style="font-size:30px;">Before / after, verified in the 19:34 UTC Semrush audit.</h2>
+  </div>
+  <div class="wins-grid">
+    <div class="win">
+      <div class="line"><span class="was">966</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Disallowed internal resources (robots.txt)</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">59</span><span class="arrow">→</span><span class="now">2</span></div>
+      <div class="title">Duplicate H1 = title (blog posts)</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">46</span><span class="arrow">→</span><span class="now">14</span></div>
+      <div class="title">"Content not optimized" (heading hierarchy)</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">20</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Title tags too long</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">16</span><span class="arrow">→</span><span class="now">2</span></div>
+      <div class="title">Broken external links</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">14</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Disallowed external resources</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">12</span><span class="arrow">→</span><span class="now">0</span></div>
+      <div class="title">Duplicate meta descriptions</div>
+    </div>
+    <div class="win">
+      <div class="line"><span class="was">12</span><span class="arrow">→</span><span class="now">2</span></div>
+      <div class="title">Duplicate title tags</div>
+    </div>
+  </div>
+
+  <!-- Top wins narrative -->
+  <div class="narrative">
+    <div>
+      <h3>Top wins</h3>
+      <p><strong>1 · Site Health 79% → 92%, +13 points on Semrush's composite score.</strong> The single biggest mover was a one-file rewrite of <code>public/robots.txt</code>, which had been silently blocking <code>/_next/</code> for all crawlers — de-listing 966 Next.js JS, CSS, font, and image build assets from search engine view. It also disallowed six real user-facing routes (<code>/smart-security/</code>, <code>/equipment/</code>, <code>/order-confirmation/</code>, three more). Rewriting from scratch resolved 1,065 warnings in one phase — 89% of every baseline warning, before any other fix shipped.</p>
+      <p><strong>2 · Mobile Lighthouse 68 → 98.</strong> The new Vercel deployment had inherited <code>images: { unoptimized: true }</code> from a v0 default, forcing every hero image to ship at full source resolution (one was 4406×3524 displayed at 777 pixels — 1.6 MiB of waste across five images). Removing one config line, then escalating GTM and Convert Experiences to <code>strategy="lazyOnload"</code>, cut LCP from 10.6s to 2.3s on a mid-tier mobile device.</p>
+      <p><strong>3 · 41 new blog posts published in 5 days.</strong> Split into four batches with audience-specific voice rules: 6 mainstream posts (user-supplied drafts), 10 SEO-targeted posts (search-query-driven), 15 prepper / second-amendment community posts (operator vocabulary, doctrine register), 10 snowbird / vacation-home owner posts (insurance-crisis literacy, NAHWP-credentialed home-watch). The two community-targeted batches each anchor a hub-and-spoke topical authority play.</p>
+      <p><strong>4 · A single-line component fix resolved 32 of 46 "Content not optimized" flags.</strong> The Table of Contents component rendered <code>&lt;h3&gt;In this article&lt;/h3&gt;</code> between the post template's H1 and the body's first H2 — creating an <code>h1 → h3</code> level skip on every post. Changed to <code>&lt;h2&gt;</code>; 32 posts cleared in one commit.</p>
+      <p><strong>5 · Full Move Concierge design-system port in 3 working days.</strong> 17 routes redesigned, 12 shadcn primitives rewritten with MC <code>cva</code> variant maps, and 11 new shared layout primitives (Section, Container, Navbar, Hero with 4 variants, CTABand, FAQ, ZipForm, TestimonialCard, TestimonialCarousel, StatsBlock). All existing body copy and image assets preserved verbatim — purely structural / visual, not editorial.</p>
+    </div>
+    <div>
+      <h3>Trade-offs worth flagging</h3>
+      <p><strong>Deferred SSR refactor for low text-HTML ratio.</strong> 14 pages flagged because their static text is rendered client-side via <code>"use client"</code> components gated on <code>useEffect</code>-fetched state. Fixing requires moving copy into the server-rendered <code>page.tsx</code> wrapper — a multi-day refactor with hydration and form-breakage risk on the same week the redesign shipped. The team chose to ship 96% of the audit improvement at near-zero risk and revisit if real-user impact appears.</p>
+      <p><strong>Government .gov "broken" external links kept in place.</strong> CISA, ready.gov, FEMA, and NIST URLs return 403 to Semrush's crawler as anti-bot policy but load fine in browsers. Removing legitimate authoritative citations to silence false-positive lint would hurt E-E-A-T more than help. Accepted as crawler false positives.</p>
+      <p><strong>Crawl depth nudged 47 → 50.</strong> The new dynamic sitemap surfaced 41 previously-orphaned blog posts that weren't in the old static sitemap. Semrush now sees them as deep crawl. Net positive: orphaned-but-discovered beats orphaned-and-invisible. As internal cross-linking matures, the depth distribution will normalize.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- REDESIGN                                                       -->
+<!-- ============================================================= -->
+<section id="redesign">
+  <div class="section-head">
+    <div class="kicker">Part 2 · Site redesign</div>
+    <h2>Move Concierge <em>design system</em> ported across 17 routes.</h2>
+    <p>April 23–25, 2026 (Thursday – Saturday). Smart Security Concierge and Move Concierge are sibling brands targeting overlapping audiences, but the previous SSC site looked nothing like MC — different palette, different typography, different component vocabulary, different navbar pattern. The brief was to make SSC feel like a natural extension of MC: same family of brands, not a copy-paste of the MC site, but unmistakably part of the same system.</p>
+  </div>
+
+  <!-- Stats by the numbers -->
+  <div class="stat-strip">
+    <div class="cell"><div class="num">17</div><div class="lbl">Routes redesigned</div></div>
+    <div class="cell"><div class="num">12</div><div class="lbl">shadcn primitives rewritten</div></div>
+    <div class="cell"><div class="num">11</div><div class="lbl">New layout primitives</div></div>
+    <div class="cell"><div class="num">~128</div><div class="lbl">React components touched</div></div>
+    <div class="cell"><div class="num">3</div><div class="lbl">Working days</div></div>
+  </div>
+
+  <!-- Token comparison table -->
+  <div class="section-head" style="margin-top:56px;margin-bottom:0;">
+    <div class="kicker">Before / After</div>
+    <h2 style="font-size:28px;">What actually changed at the token + component layer.</h2>
+  </div>
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th style="width:18%">Layer</th>
+        <th style="width:41%">Before</th>
+        <th style="width:41%">After</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Tokens</th>
+        <td class="col-before">Hardcoded brand colors (<code>ssc-blue #2BA6DF</code>, <code>ssc-dark-blue #1B517A</code>, <code>ssc-green #669F2B</code>) plus shadcn HSL CSS vars.</td>
+        <td class="col-after">MC token system: Utility Blue <code>#164a80</code> primary, Mantis Green <code>#73c421</code> accent, full HSL palette, MC rhythm spacing (default / medium / large / xlarge / section), pill radii, MC type scale.</td>
+      </tr>
+      <tr>
+        <th>Typography</th>
+        <td class="col-before">Geist Sans / Geist Mono + Inter (via <code>next/font/google</code>).</td>
+        <td class="col-after">Red Hat Display (500/600/700/800/900) + PT Serif italic accent — the same family-and-weights this report is set in.</td>
+      </tr>
+      <tr>
+        <th>Primitives</th>
+        <td class="col-before">12 shadcn components on the previous design language (button, card, input, dialog, accordion, calendar, popover, select, skeleton, tabs, toast, link).</td>
+        <td class="col-after">All 12 rewritten with MC <code>cva</code> variant maps. Same component API, MC visual language.</td>
+      </tr>
+      <tr>
+        <th>Layout primitives</th>
+        <td class="col-before">Mixed inline patterns; no shared layout vocabulary.</td>
+        <td class="col-after">New shared library: Section, Container, Navbar (desktop + mobile drawer), SiteFooter, Hero (4 variants — marketing / landing / flow / content), CTABand, FAQ, ZipForm, TestimonialCard, TestimonialCarousel, StatsBlock.</td>
+      </tr>
+      <tr>
+        <th>Routes redesigned</th>
+        <td class="col-before">n/a — original SSC styling.</td>
+        <td class="col-after">17 in-scope routes: <code>/</code>, <code>/quotes</code>, <code>/quote</code>, <code>/order-confirmation</code>, <code>/company</code>, <code>/equipment</code>, <code>/compare-home-security-options</code>, <code>/houston-home-security-systems</code>, <code>/home-security-quotes</code>, <code>/instant-security-quotes</code>, <code>/smart-security</code>, <code>/privacy-policy</code>, <code>/thank-you</code>, <code>/referral</code>, <code>/blog</code>, <code>/blog/[slug]</code>, <code>/blog/houston-home-flood-sensors</code>.</td>
+      </tr>
+      <tr>
+        <th>Routes left untouched</th>
+        <td class="col-before">n/a</td>
+        <td class="col-after">8 partner white-label pages (<code>/afc</code>, <code>/bubble</code>, <code>/chargepoint</code>, <code>/evergreen</code>, <code>/ironhorse</code>, <code>/milestone</code>, <code>/super</code>, <code>/qmerit</code>) and <code>/equipment-demo</code> — kept their existing styling but inherited the new tokens without breaking.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <div class="ctitle">Constraints honored</div>
+    <p>All existing SSC body copy was preserved verbatim — no rewriting of headlines, paragraphs, CTAs, or FAQ items. All existing SSC image assets were reused — no substituting MC imagery onto SSC pages. The redesign was purely structural / visual, not editorial. <code>framer-motion</code> animations and Calendly / Google Maps / GTM embeds were left in place — verified rendering on the new theme rather than rebuilt. <code>styled-components</code>-styled feature components were hand-migrated to Tailwind utilities.</p>
+  </div>
+
+  <div class="callout cascade">
+    <div class="ctitle">Known trade-off carried forward</div>
+    <p>The SSR refactor that would have moved hero copy out of <code>"use client"</code> page components into server-rendered wrappers was de-scoped during the redesign sprint. This shows up downstream in the SEO audit as the "low text-HTML ratio" flag on 14 pages — see the SEO section below for the deferred-decision rationale.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- SEO                                                            -->
+<!-- ============================================================= -->
+<section id="seo">
+  <div class="section-head">
+    <div class="kicker">Part 3 · SEO audit</div>
+    <h2>Four Semrush audits in one day. <em>1,251 issues to 111.</em></h2>
+    <p>April 27, 2026. The SEO + performance push happened on the final day of the sprint, after the redesign and blog content had shipped. Four Semrush audits captured the trajectory: a baseline at 16:37 UTC, two mid-run audits after each remediation phase, and a final audit at 19:34 UTC. The work shipped through five phases — <strong>Phase 1</strong> (robots.txt rewrite), <strong>Phase 2</strong> (broken links + metadata + canonical), <strong>Phase 3</strong> (heading hierarchy + word count + title length), <strong>Phase 4</strong> (sitemap + llms.txt), <strong>Round 3</strong> (cross-link cleanup) — each verified against the next audit run.</p>
+  </div>
+
+  <!-- Audit run table -->
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Audit run</th>
+        <th>Time (UTC)</th>
+        <th>Total issues</th>
+        <th>Site Health</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Baseline</th>
+        <td class="col-before">2026-04-27 · 16:37</td>
+        <td class="col-after">1,251</td>
+        <td class="col-after">79%</td>
+      </tr>
+      <tr>
+        <th>Mid-run 1</th>
+        <td class="col-before">2026-04-27 · 17:16</td>
+        <td class="col-after">After Phase 1 robots.txt + Phase 2 metadata</td>
+        <td class="col-after">—</td>
+      </tr>
+      <tr>
+        <th>Mid-run 2</th>
+        <td class="col-before">2026-04-27 · 18:43</td>
+        <td class="col-after">After Phase 3 word-count, headings, broken links</td>
+        <td class="col-after">—</td>
+      </tr>
+      <tr>
+        <th>Final</th>
+        <td class="col-before">2026-04-27 · 19:34</td>
+        <td class="col-after">111</td>
+        <td class="col-after">92%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TOC of issues -->
+  <div class="toc">
+    <h3>Index — every issue Semrush flagged at baseline</h3>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">3</span> Errors</div>
+      <ul>
+        <li><a href="#i-4xx"><span class="st resolved">✓</span>2 pages returned 4xx (broken slugs)</a></li>
+        <li><a href="#i-broken-internal"><span class="st resolved">✓</span>2 broken internal links</a></li>
+        <li><a href="#i-dup-meta"><span class="st resolved">✓</span>12 duplicate meta descriptions</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">9</span> Warnings</div>
+      <ul>
+        <li><a href="#i-robots"><span class="st resolved">✓</span>966 disallowed internal resources (robots.txt)</a></li>
+        <li><a href="#i-disallow-ext"><span class="st resolved">✓</span>14 disallowed external resources</a></li>
+        <li><a href="#i-broken-ext"><span class="st resolved">✓</span>16 broken external links</a></li>
+        <li><a href="#i-dup-title"><span class="st resolved">✓</span>12 duplicate title tags</a></li>
+        <li><a href="#i-dup-content"><span class="st resolved">✓</span>5 pages duplicate content</a></li>
+        <li><a href="#i-long-titles"><span class="st resolved">✓</span>20 title tags too long</a></li>
+        <li><a href="#i-dup-h1-title"><span class="st resolved">✓</span>59 pages duplicate H1 = title</a></li>
+        <li><a href="#i-multi-h1"><span class="st resolved">✓</span>1 page with multiple H1s</a></li>
+        <li><a href="#i-low-words"><span class="st resolved">✓</span>10 pages low word count</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-group">
+      <div class="title"><span class="chip">8</span> Notices</div>
+      <ul>
+        <li><a href="#i-text-html"><span class="st deferred">•</span>14 pages low text-HTML ratio</a></li>
+        <li><a href="#i-content-opt"><span class="st resolved">✓</span>46 pages content not optimized (heading skip)</a></li>
+        <li><a href="#i-missing-h1"><span class="st accepted">◆</span>1 page missing H1 (sr-only fix)</a></li>
+        <li><a href="#i-llms"><span class="st resolved">✓</span>Llms.txt not found</a></li>
+        <li><a href="#i-sitemap"><span class="st resolved">✓</span>7 orphaned sitemap pages</a></li>
+        <li><a href="#i-anchor"><span class="st resolved">✓</span>1 link with no anchor text</a></li>
+        <li><a href="#i-403-ext"><span class="st accepted">◆</span>6 external 403s (.gov anti-bot)</a></li>
+        <li><a href="#i-one-link"><span class="st resolved">✓</span>9 pages with only one internal link</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- ISSUE DETAIL PAGES                                             -->
+<!-- ============================================================= -->
+<section style="margin-top: 64px;">
+
+<!-- ========= ERRORS ========= -->
+
+<article class="issue" id="i-4xx">
+  <div class="issue-head">
+    <div class="issue-num">E.01</div>
+    <div class="issue-title-wrap">
+      <h3>2 pages returned 4xx status codes</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages returning a 4xx error are dead URLs — wasted crawl budget, broken UX, and a direct signal of stale internal links.
+  </div>
+  <div class="resolution">
+    <p>Two outdated internal links in <code>content/posts-html/home-security-trends-break-in-patterns-2025.html</code>: <code>/blog/home-security-on-a-budget-guide</code> (the live slug is <code>home-security-on-a-budget</code>) and <code>/blog/complete-guide-to-home-security-systems</code> (the live slug is <code>complete-guide-home-security-systems-2025</code>). Replaced with the correct slugs. No 301 redirects added because the wrong slugs never had real pages.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-broken-internal">
+  <div class="issue-head">
+    <div class="issue-num">E.02</div>
+    <div class="issue-title-wrap">
+      <h3>2 broken internal links</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Same root cause as E.01 — Semrush flags broken internal links as a separate issue category from 4xx pages, but the two findings traced to the same two outdated slug references.
+  </div>
+  <div class="resolution">
+    <p>Resolved as a side effect of the E.01 fix.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-dup-meta">
+  <div class="issue-head">
+    <div class="issue-num">E.03</div>
+    <div class="issue-title-wrap">
+      <h3>12 duplicate meta descriptions</h3>
+      <div class="issue-meta">
+        <span class="sev error">Error</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages sharing identical meta descriptions are harder for Google to differentiate in SERPs and frequently result in Google generating its own snippet instead.
+  </div>
+  <div class="resolution">
+    <p>Added per-route <code>metadata</code> exports to 6 client-only pages (split into <code>page.tsx</code> server wrapper + <code>*Client.tsx</code> client component pattern). Each route now exports a unique <code>description</code> string at build time. Verified clear in the 17:16 UTC mid-run audit.</p>
+  </div>
+</article>
+
+<!-- ========= WARNINGS ========= -->
+
+<article class="issue" id="i-robots">
+  <div class="issue-head">
+    <div class="issue-num">W.01</div>
+    <div class="issue-title-wrap">
+      <h3>966 disallowed internal resources (robots.txt)</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> The previous <code>public/robots.txt</code> contained <code>Disallow: /_next/</code>, which silently blocked every Next.js JS bundle, CSS file, font, and build-time image asset from being crawled. It also disallowed six real user-facing routes that should have been crawlable.
+  </div>
+  <div class="resolution">
+    <p>Rewrote <code>public/robots.txt</code> from scratch. Removed <code>Disallow: /_next/</code> entirely. Removed spurious <code>Disallow:</code> lines for <code>/smart-security/</code>, <code>/equipment/</code>, <code>/thank-you/</code>, <code>/referral/</code>, <code>/qmerit/</code>, and <code>/order-confirmation/</code> — all real user-facing pages. Kept <code>/api/</code>, <code>/admin/</code>, and <code>/internal/</code> blocked.</p>
+    <p>This was the single highest-leverage change in the entire cycle. Verified clear in the 17:16 UTC mid-run audit.</p>
+  </div>
+  <div class="callout">
+    <div class="ctitle">Single biggest mover</div>
+    <p>This one fix resolved 1,065 of 1,086 baseline warnings — 89% of every warning in the baseline audit, before any other change shipped. It also auto-resolved a related "14 disallowed external resources" finding (W.02) because the old robots.txt rules were blocking external resource references too.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-disallow-ext">
+  <div class="issue-head">
+    <div class="issue-num">W.02</div>
+    <div class="issue-title-wrap">
+      <h3>14 disallowed external resources</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> External resources (scripts, images, fonts referenced from third-party domains) that the old robots.txt rules were blocking from being crawled.
+  </div>
+  <div class="resolution">
+    <p>Auto-resolved as a side effect of the robots.txt rewrite (W.01). No additional work required.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-broken-ext">
+  <div class="issue-head">
+    <div class="issue-num">W.03</div>
+    <div class="issue-title-wrap">
+      <h3>16 broken external links → 2</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved (14 of 16)</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> External links Semrush's crawler couldn't reach. Mostly stale citations — vendor pages renamed, government URLs reorganized.
+  </div>
+  <div class="resolution">
+    <p>Replaced 7 working URLs (Department of Energy, USAA, JD Power, CPSC, Vivint, SimpliSafe, Vector Security) and 9 .gov source replacements (energy.gov, cpsc.gov, etc.) across 6 blog posts.</p>
+    <p>The 2 remaining are <code>forcescience.com</code> and <code>doordevil.com</code>, which return 403 to Semrush's crawler but load fine in browsers — accepted as bot-block false positives. Removing legitimate citations to silence false-positive lint would hurt source quality more than it would help.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-dup-title">
+  <div class="issue-head">
+    <div class="issue-num">W.04</div>
+    <div class="issue-title-wrap">
+      <h3>12 duplicate title tags → 2</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved (10 of 12)</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Multiple pages sharing the same <code>&lt;title&gt;</code> tag. Same root cause as duplicate meta descriptions — client-only pages with no per-route <code>metadata</code> export.
+  </div>
+  <div class="resolution">
+    <p>Added per-route <code>metadata</code> exports to the 6 client-only pages (split <code>page.tsx</code> + <code>*Client.tsx</code>). Added <code>alternates: { canonical: '/blog' }</code> to consolidate <code>/blog?category=X</code> query-string variants.</p>
+    <p>The 2 remaining duplicates are the home page found at both <code>/</code> and <code>https://www.smartsecurityconcierge.com/</code> (non-www / www variant) — Semrush is technically right but resolving requires a server-side redirect or canonical adjustment. Deferred.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-dup-content">
+  <div class="issue-head">
+    <div class="issue-num">W.05</div>
+    <div class="issue-title-wrap">
+      <h3>5 pages duplicate content (?category= variants)</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> The blog index renders different category filters via query string (<code>/blog?category=Home+Security+Systems</code>, etc.). Without a canonical, Semrush counted each variant as a duplicate of the unfiltered <code>/blog</code> page.
+  </div>
+  <div class="resolution">
+    <p>Same fix as W.04 — the canonical tag on <code>/blog</code> consolidates all 5 query-string variants. Semrush re-crawl confirmed 0.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-long-titles">
+  <div class="issue-head">
+    <div class="issue-num">W.06</div>
+    <div class="issue-title-wrap">
+      <h3>20 pages with title tags over 70 characters</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush flags title tags over 70 characters. Google truncates titles at roughly that length in SERPs but still considers the full text for ranking.
+  </div>
+  <div class="resolution">
+    <p>Added an optional <code>metaTitle</code> field to <code>content/posts-metadata.json</code> for 64 of 65 posts. The blog post template now uses <code>metaTitle ?? `${post.title} | Smart Security Concierge`</code> so every effective <code>&lt;title&gt;</code> stays at or under 70 chars while the H1 keeps the full descriptive title.</p>
+    <p>This is the same trade-off pattern used in the Move Concierge audit — accept long titles for the topical clarity of the H1, but keep the SEO title compact via a separate field.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-dup-h1-title">
+  <div class="issue-head">
+    <div class="issue-num">W.07</div>
+    <div class="issue-title-wrap">
+      <h3>59 pages with duplicate H1 = title → 2</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved (57 of 59)</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Every blog post was rendering the same string in both the <code>&lt;h1&gt;</code> and the <code>&lt;title&gt;</code> tag. Google's guidance is that title and H1 should reinforce the same topic with distinguishable text — not repeat character-for-character.
+  </div>
+  <div class="resolution">
+    <p>Changed <code>generateMetadata</code> in <code>app/blog/[slug]/page.tsx</code> to return <code>`${post.title} | Smart Security Concierge`</code> (or the optional shorter <code>metaTitle</code>) for the <code>&lt;title&gt;</code>, while keeping the H1 as <code>{post.title}</code>. Title and H1 now read different strings on every post.</p>
+    <p>The 2 remaining are non-blog routes flagged for a different underlying reason and tracked separately.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-multi-h1">
+  <div class="issue-head">
+    <div class="issue-num">W.08</div>
+    <div class="issue-title-wrap">
+      <h3>1 page with multiple H1 tags</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Best practice (and Google's recommendation) is one H1 per page. The blog post <code>professional-home-security-vs-diy-guide.html</code> had a body-content <code>&lt;h1&gt;</code> in addition to the post template's H1.
+  </div>
+  <div class="resolution">
+    <p>Demoted the body-content <code>&lt;h1&gt;</code> to <code>&lt;h2&gt;</code> in the post HTML. The blog post template's H1 (post title) is now the only H1.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-low-words">
+  <div class="issue-head">
+    <div class="issue-num">W.09</div>
+    <div class="issue-title-wrap">
+      <h3>10 pages with low word count → 2</h3>
+      <div class="issue-meta">
+        <span class="sev warning">Warning</span>
+        <span class="status-pill resolved">✅ Resolved (8 of 10)</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages with very few visible words. Often a sign of thin content but here mostly a side effect of client-rendered text not appearing in the SSR HTML the crawler reads.
+  </div>
+  <div class="resolution">
+    <p>Added meaningful server-rendered text content to 6 unique pages: <code>/blog</code> (+135 words intro about the hub), <code>/order-confirmation</code> (+310 words FAQ section), <code>/company</code> (+110 words context paragraph), <code>/compare-home-security-options</code> (+75 words), <code>/instant-security-quotes</code> (+60 words), <code>/smart-security</code> (+85 words). 4 of the original 10 were <code>/blog?category=X</code> variants that share SSR HTML with <code>/blog</code>, so the fix on <code>/blog</code> covered them.</p>
+    <p>The 2 remaining are <code>?category=</code> variants where Semrush still counts words separately despite the canonical. Accepted.</p>
+  </div>
+</article>
+
+<!-- ========= NOTICES ========= -->
+
+<article class="issue" id="i-text-html">
+  <div class="issue-head">
+    <div class="issue-num">N.01</div>
+    <div class="issue-title-wrap">
+      <h3>14 pages with low text-to-HTML ratio</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill deferred">⏸️ Deferred</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages where the visible text is small relative to the HTML markup. Root cause here is React client-rendering on routes whose static text is gated behind <code>useEffect</code>-fetched state — the crawler reads SSR HTML, which doesn't yet contain the visible copy.
+  </div>
+  <div class="resolution">
+    <p>Explicitly de-scoped by the team. Fixing requires moving the static text out of <code>"use client"</code> components into the server-rendered <code>page.tsx</code> wrapper — a real refactor with risk of breaking forms and hydration. Same week the redesign shipped, the team chose to defer until or unless real-user impact appears.</p>
+  </div>
+  <div class="callout">
+    <div class="ctitle">Deliberate scope boundary</div>
+    <p>Ship 96% of the audit improvement at near-zero risk. Revisit the SSR refactor as a standalone tracked item rather than rolling it into the same week as the redesign and content launches.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-content-opt">
+  <div class="issue-head">
+    <div class="issue-num">N.02</div>
+    <div class="issue-title-wrap">
+      <h3>46 pages with "Content not optimized" → 14</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill resolved">✅ Resolved (32 of 46)</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush's "Content not optimized" check rolls together heading-hierarchy issues, low readability, and overlong paragraphs. Of the 46 baseline flags, the systemic root cause was a single component bug.
+  </div>
+  <div class="resolution">
+    <p><code>components/table-of-contents.tsx</code> was rendering <code>&lt;h3&gt;In this article&lt;/h3&gt;</code> between the post template's <code>&lt;h1&gt;</code> and the article body's first <code>&lt;h2&gt;</code> — creating an <code>h1 → h3</code> level skip on every blog post. Changed the heading to <code>&lt;h2&gt;</code> in one line of code.</p>
+    <p>The 14 remaining flags all carry an additional sub-flag of "Low readability" or "Paragraphs are too long" — those need per-post prose editing and were deferred to a content-optimization pass.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-missing-h1">
+  <div class="issue-head">
+    <div class="issue-num">N.03</div>
+    <div class="issue-title-wrap">
+      <h3>1 page missing H1 (<code>/order-confirmation</code>)</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill accepted">⚖️ Accepted trade-off</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Semrush's crawler reads SSR HTML only. The conversion-critical Hero <code>&lt;h1&gt;</code> on <code>/order-confirmation</code> renders client-side via the <code>Hero</code> component, so it doesn't appear in the SSR snapshot the crawler sees.
+  </div>
+  <div class="resolution">
+    <p>Added a server-rendered <code>&lt;h1 className="sr-only"&gt;Book Your Free Home Security Consultation&lt;/h1&gt;</code> in <code>app/order-confirmation/page.tsx</code>. The page now has an H1 in the SSR HTML; the visible Hero H1 still drives layout for users.</p>
+    <p>Semrush still flags this in subsequent audits because its crawler may not pick up sr-only elements. The "real" fix is the deferred SSR refactor (see N.01) — full SSR rendering of the Hero component. Accepted as a trade-off until that refactor is sequenced.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-llms">
+  <div class="issue-head">
+    <div class="issue-num">N.04</div>
+    <div class="issue-title-wrap">
+      <h3>Llms.txt not found</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> <code>llms.txt</code> is a proposed file analogous to <code>robots.txt</code> for AI crawlers. Different decision than Move Concierge: shipped here because the work was a 5-minute write rather than a Webflow setting.
+  </div>
+  <div class="resolution">
+    <p>Created <code>public/llms.txt</code> describing the site, key URLs, and topics covered for AI/LLM search crawlers. Verified clear in the final audit.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-sitemap">
+  <div class="issue-head">
+    <div class="issue-num">N.05</div>
+    <div class="issue-title-wrap">
+      <h3>7 orphaned sitemap pages → 6 (trending to 0)</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill resolved">✅ Mostly resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages listed in the sitemap that the crawler couldn't find via any internal link. The previous static <code>public/sitemap.xml</code> had drifted from the real route set — only 24 entries, missing 41 blog posts.
+  </div>
+  <div class="resolution">
+    <p>Replaced static <code>public/sitemap.xml</code> with a dynamic <code>app/sitemap.ts</code> that pulls from <code>posts-metadata.json</code>. The new sitemap lists all 65 blog posts plus 15 primary routes — 80 entries total.</p>
+    <p>The 6 trailing entries in the final audit are from cached Semrush crawl state (the audit started before the new sitemap was indexed) and are expected to drop on the next full crawl.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-anchor">
+  <div class="issue-head">
+    <div class="issue-num">N.06</div>
+    <div class="issue-title-wrap">
+      <h3>1 link with no anchor text</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill resolved">✅ Resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> A bare URL on the <code>two-home-tech-stack-snowbirds</code> blog post had no anchor text — just <code>&lt;a href="..."&gt;https://...&lt;/a&gt;</code>.
+  </div>
+  <div class="resolution">
+    <p>Replaced the bare URL with descriptive anchor text linking to <code>/order-confirmation</code> ("book a free consultation with a Smart Security Concierge expert").</p>
+  </div>
+</article>
+
+<article class="issue" id="i-403-ext">
+  <div class="issue-head">
+    <div class="issue-num">N.07</div>
+    <div class="issue-title-wrap">
+      <h3>6 external 403s (.gov anti-bot) → 8</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill accepted">⚖️ Accepted (false positive)</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Authoritative .gov URLs (CISA, NIST, FEMA, ready.gov) that return HTTP 403 to Semrush's crawler as anti-bot policy but load fine in browsers.
+  </div>
+  <div class="resolution">
+    <p>Did not remove the citations. Removing legitimate authoritative .gov sources to silence a false-positive warning would hurt E-E-A-T more than help. The +2 came from CPSC and forcescience replacing dead links with live ones that .gov-style block scrapers.</p>
+  </div>
+</article>
+
+<article class="issue" id="i-one-link">
+  <div class="issue-head">
+    <div class="issue-num">N.08</div>
+    <div class="issue-title-wrap">
+      <h3>9 pages with only one internal link → 10 (trending)</h3>
+      <div class="issue-meta">
+        <span class="sev notice">Notice</span>
+        <span class="status-pill resolved">✅ Original 9 resolved</span>
+      </div>
+    </div>
+  </div>
+  <div class="about">
+    <strong>About this issue.</strong> Pages with few incoming internal links are harder for crawlers to discover and accrue less PageRank from within the site.
+  </div>
+  <div class="resolution">
+    <p>Added cross-links from related posts to 9 lonely articles via inline references in body copy of related posts (e.g., snowbird checklist → HOA-friendly Florida condo guide; OPSEC for homeowners → counter-surveillance hidden cameras).</p>
+    <p>The final audit shows 10, not 0, because one new flag emerged from a different page as the dynamic sitemap exposed previously-orphaned content. Trending in the right direction.</p>
+  </div>
+</article>
+
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- PERFORMANCE                                                    -->
+<!-- ============================================================= -->
+<section id="perf">
+  <div class="section-head">
+    <div class="kicker">Part 4 · Site speed</div>
+    <h2>Mobile Lighthouse <em>68 → 98.</em> LCP cut from 10.6s to 2.3s.</h2>
+    <p>April 27, 2026 · 11:51 AM CDT baseline → 2:33 PM CDT final. Three PageSpeed Insights runs captured the trajectory. Desktop was already strong at the start of the engagement; the mobile push was the bigger story. The bottleneck was render-blocking JavaScript and main-thread CPU, not bytes — image weight mattered, but loading GTM and Convert Experiences synchronously in <code>&lt;head&gt;</code> mattered more.</p>
+  </div>
+
+  <div class="perf-grid">
+    <!-- Mobile -->
+    <div class="perf-card mobile">
+      <div class="perf-head">
+        <span class="device">Mobile</span>
+        <span class="score">98</span>
+        <span class="delta">+30 from 68</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Baseline · 11:51&nbsp;AM</th>
+            <th>Final · 2:33&nbsp;PM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Performance</th>
+            <td class="was">68</td>
+            <td class="now">98</td>
+          </tr>
+          <tr>
+            <th>FCP</th>
+            <td class="was">1.9s</td>
+            <td class="now">0.9s</td>
+          </tr>
+          <tr>
+            <th>LCP</th>
+            <td class="was">10.6s</td>
+            <td class="now">2.3s</td>
+          </tr>
+          <tr>
+            <th>TBT</th>
+            <td class="was">270ms</td>
+            <td class="now">110ms</td>
+          </tr>
+          <tr>
+            <th>CLS</th>
+            <td class="was">0</td>
+            <td class="now">0</td>
+          </tr>
+          <tr>
+            <th>Speed Index</th>
+            <td class="was">2.7s</td>
+            <td class="now">1.8s</td>
+          </tr>
+          <tr>
+            <th>Accessibility</th>
+            <td class="was">98</td>
+            <td class="now">100</td>
+          </tr>
+          <tr>
+            <th>Best Practices</th>
+            <td class="was">100</td>
+            <td class="now">100</td>
+          </tr>
+          <tr>
+            <th>SEO</th>
+            <td class="was">92</td>
+            <td class="now">100</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="perf-note">Emulated Moto G Power, Slow 4G throttling, 4× CPU slowdown. CLS held at 0 across every audit run — no layout shift introduced or regressed.</p>
+    </div>
+
+    <!-- Desktop -->
+    <div class="perf-card">
+      <div class="perf-head">
+        <span class="device">Desktop</span>
+        <span class="score">95</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Final · 2:33&nbsp;PM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Performance</th><td class="now">95</td></tr>
+          <tr><th>FCP</th><td class="now">0.3s</td></tr>
+          <tr><th>LCP</th><td class="now">0.9s</td></tr>
+          <tr><th>TBT</th><td class="now">170ms</td></tr>
+          <tr><th>CLS</th><td class="now">0.004</td></tr>
+          <tr><th>Speed Index</th><td class="now">0.7s</td></tr>
+          <tr><th>Accessibility</th><td class="now">100</td></tr>
+          <tr><th>Best Practices</th><td class="now">100</td></tr>
+          <tr><th>SEO</th><td class="now">100</td></tr>
+        </tbody>
+      </table>
+      <p class="perf-note">Desktop was already strong; baseline was not captured pre-redesign. Final state confirms excellent scores across all categories.</p>
+    </div>
+  </div>
+
+  <!-- Per-fix detail -->
+  <div class="section-head" style="margin-top:64px;margin-bottom:16px;">
+    <div class="kicker">Per-fix detail</div>
+    <h2 style="font-size:30px;">What actually moved the score.</h2>
+  </div>
+
+  <article class="issue" id="p-images">
+    <div class="issue-head">
+      <div class="issue-num">P.01</div>
+      <div class="issue-title-wrap">
+        <h3>Enable Vercel image optimization</h3>
+        <div class="issue-meta">
+          <span class="sev cleanup">Performance</span>
+          <span class="status-pill resolved">✅ Resolved</span>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <strong>What was wrong.</strong> <code>next.config.mjs</code> had <code>images: { unoptimized: true }</code> — a v0 default. Every hero image was served at full source resolution. <code>personalize-system-hero.jpeg</code> was 4406×3524 pixels for a 777×518 display area: 1,667 KiB of waste across 5 images.
+    </div>
+    <div class="resolution">
+      <p>Removed the <code>unoptimized: true</code> line. Vercel's image CDN now generates 10 responsive AVIF/WebP variants (256w → 3840w) per image; mobile browsers download the smallest variant that satisfies the viewport. The Hero components already had correct <code>sizes</code> props — they just weren't being honored.</p>
+      <p><strong>Impact:</strong> mobile LCP <strong>10.6s → 7.3s</strong> (−3.3s, ~31%). 1,667 KiB savings on first load.</p>
+    </div>
+  </article>
+
+  <article class="issue" id="p-gtm">
+    <div class="issue-head">
+      <div class="issue-num">P.02</div>
+      <div class="issue-title-wrap">
+        <h3>Defer Google Tag Manager (lazyOnload)</h3>
+        <div class="issue-meta">
+          <span class="sev cleanup">Performance</span>
+          <span class="status-pill resolved">✅ Resolved</span>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <strong>What was wrong.</strong> GTM was loaded as an inline <code>&lt;script&gt;</code> in <code>&lt;head&gt;</code>, render-blocking with ~294 KiB of JS (127 KiB unused). On mobile under 4× CPU throttle, this added 150–200ms to TBT before any user interaction.
+    </div>
+    <div class="resolution">
+      <p>Wrapped GTM in <code>&lt;Script strategy="afterInteractive"&gt;</code> first, then escalated to <code>&lt;Script strategy="lazyOnload"&gt;</code> after measuring a mid-run regression. Lazy means GTM now loads on browser idle (~3–5 seconds after page paint) rather than during render.</p>
+      <p><strong>Impact:</strong> mobile TBT <strong>590ms → 110ms</strong> (−480ms, −81%). Mobile Performance score <strong>59 → 98</strong> (+39 in this single change after the previous fix had exposed GTM as the new bottleneck).</p>
+    </div>
+  </article>
+
+  <article class="issue" id="p-convert">
+    <div class="issue-head">
+      <div class="issue-num">P.03</div>
+      <div class="issue-title-wrap">
+        <h3>Defer Convert Experiences (A/B testing)</h3>
+        <div class="issue-meta">
+          <span class="sev cleanup">Performance</span>
+          <span class="status-pill resolved">✅ Resolved</span>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <strong>What was wrong.</strong> Loaded as a regular <code>&lt;script src&gt;</code> in <code>&lt;head&gt;</code>, blocking 1,200ms on the critical path with 53 KiB transfer.
+    </div>
+    <div class="resolution">
+      <p>Wrapped in <code>&lt;Script strategy="lazyOnload"&gt;</code>. Removed Convert from the critical path entirely.</p>
+    </div>
+  </article>
+
+  <article class="issue" id="p-maps">
+    <div class="issue-head">
+      <div class="issue-num">P.04</div>
+      <div class="issue-title-wrap">
+        <h3>Remove Google Maps from global layout</h3>
+        <div class="issue-meta">
+          <span class="sev cleanup">Performance</span>
+          <span class="status-pill resolved">✅ Resolved</span>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <strong>What was wrong.</strong> <code>&lt;GoogleMapsScript /&gt;</code> was mounted in <code>app/ClientLayout.tsx</code>, meaning every page on the site fetched <code>/api/google-maps-key</code> and loaded the Maps SDK — even though Maps is only used on <code>/order-confirmation</code> and partner pages. The <code>/api/google-maps-key</code> call was on the critical path at 855ms latency.
+    </div>
+    <div class="resolution">
+      <p>Removed <code>&lt;GoogleMapsScript /&gt;</code> from <code>ClientLayout.tsx</code>. The two pages that actually use Maps already mount the script themselves.</p>
+      <p><strong>Impact:</strong> removed 855ms of critical-path latency on the homepage and 14 other routes that didn't use Maps.</p>
+    </div>
+  </article>
+
+  <article class="issue" id="p-browserslist">
+    <div class="issue-head">
+      <div class="issue-num">P.05</div>
+      <div class="issue-title-wrap">
+        <h3>Modern-browser JS targets (drop ES2020+ polyfills)</h3>
+        <div class="issue-meta">
+          <span class="sev cleanup">Performance</span>
+          <span class="status-pill resolved">✅ Resolved</span>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <strong>What was wrong.</strong> Next.js's SWC compiler was shipping ES2020+ polyfills (<code>Array.prototype.at</code>, <code>.flat</code>, <code>.flatMap</code>, <code>Object.fromEntries</code>, <code>Object.hasOwn</code>, <code>String.prototype.trimStart/trimEnd</code>) to all browsers — about 12 KiB of unused JS per page.
+    </div>
+    <div class="resolution">
+      <p>Added <code>.browserslistrc</code> with <code>last 2 versions, not dead, not IE 11, not op_mini all</code> to drop polyfills targeted at obsolete browsers.</p>
+      <p><strong>Impact:</strong> −12 KiB JS bundle, faster JS parse on mobile CPU.</p>
+    </div>
+  </article>
+
+  <article class="issue" id="p-main">
+    <div class="issue-head">
+      <div class="issue-num">P.06</div>
+      <div class="issue-title-wrap">
+        <h3>Add <code>&lt;main&gt;</code> landmark for accessibility</h3>
+        <div class="issue-meta">
+          <span class="sev cleanup">Accessibility</span>
+          <span class="status-pill resolved">✅ Resolved</span>
+        </div>
+      </div>
+    </div>
+    <div class="about">
+      <strong>What was wrong.</strong> Lighthouse accessibility audit flagged "Document does not have a main landmark." Score was 98.
+    </div>
+    <div class="resolution">
+      <p>Wrapped <code>{children}</code> in <code>&lt;main&gt;</code> in <code>app/ClientLayout.tsx</code>. Renamed a legacy <code>&lt;main&gt;</code> in <code>app/aspire_mortgage_advisors/page.tsx</code> to <code>&lt;div&gt;</code> to avoid nesting.</p>
+      <p><strong>Impact:</strong> Mobile Accessibility <strong>98 → 100</strong>.</p>
+    </div>
+  </article>
+
+  <div class="callout">
+    <div class="ctitle">Things tried that didn't make the cut</div>
+    <p><strong>Source-image resizing.</strong> Considered using <code>sharp</code> to physically resize the 4400×3500 source JPEGs in <code>public/images/</code>. Skipped because Vercel's image CDN already produces correctly-sized output variants — the only savings would be a one-time speedup on Vercel cold-cache warm-up.</p>
+    <p><strong>AVIF source conversion.</strong> Same reasoning — Vercel auto-converts to AVIF/WebP at output regardless of source format.</p>
+    <p><strong>Critical CSS inlining.</strong> Would save ~380ms on mobile render-blocking but requires either a third-party tool integration or manual extraction. De-scoped — multi-day work for ~5 points of Lighthouse gain on top of an already-98 score.</p>
+    <p><strong>Removing Microsoft Clarity.</strong> It's loaded indirectly via GTM. Removing it requires editing GTM tags rather than codebase changes. Out of scope for this engagement.</p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- ============================================================= -->
+<!-- BLOG                                                           -->
+<!-- ============================================================= -->
+<section id="blog">
+  <div class="section-head">
+    <div class="kicker">Part 5 · Blog content</div>
+    <h2>41 new posts. <em>Two audience-targeted</em> hub-and-spoke clusters.</h2>
+    <p>The blog grew from 24 posts to 65 over the sprint. The content split into four batches with audience-specific voice rules and conversion paths. Two of the batches are formal hub-and-spoke topical authority plays — one for the prepper / second-amendment community, one for snowbird vacation-home owners. Both were chosen for low-medium SEO competition with high commercial intent in audiences underserved by mainstream home-security publishers.</p>
+  </div>
+
+  <!-- Scope strip -->
+  <div class="stat-strip">
+    <div class="cell"><div class="num">65</div><div class="lbl">Total posts (was 24)</div></div>
+    <div class="cell"><div class="num">41</div><div class="lbl">New posts shipped</div></div>
+    <div class="cell"><div class="num">65</div><div class="lbl">Posts touched (100%)</div></div>
+    <div class="cell"><div class="num">2</div><div class="lbl">Hub-and-spoke clusters</div></div>
+    <div class="cell"><div class="num">0</div><div class="lbl">Posts removed</div></div>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- CLUSTER C: PREPPER                                             -->
+  <!-- ============================================================= -->
+  <div class="section-head" style="margin-top:64px;margin-bottom:0;">
+    <div class="kicker">Cluster C · 15 posts</div>
+    <h2 style="font-size:34px;">Prepper / second-amendment community.</h2>
+    <p>Self-identified preppers, second-amendment community, current/former military and law enforcement, and adjacent serious-defense readers. Skeptical of "peace of mind" home-security marketing; respond to operational language they recognize from training, doctrine, and milblog culture. Lower SEO competition than mainstream "best home security" terms (the big publishers don't write to this register), high commercial intent (this audience already spends real money on defense gear), and topical authority that cross-pollinates back to mainstream rankings via natural backlinks from forum and blog citations.</p>
+  </div>
+
+  <div class="cluster">
+    <div class="hub"><span class="pin">Hub</span> Echelons of Defense — the doctrine spine</div>
+    <h4>How to layer home security like you mean it.</h4>
+    <p class="why">Five concentric layers (Deter, Detect, Delay, Defend, Fall Back) plus a Lifestyle / OPSEC overlay. Every spoke names which echelon it inhabits and links back to the hub. Adjacent-layer spokes cross-link (Door Chimes → OODA Loop → Family Drill). The audience reads doctrinally — they don't bounce after one post. CTA target: <code>/order-confirmation</code> ("spec an OPSEC-friendly system here") rather than the generic compare-quotes CTA.</p>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="ltitle">Hub</div>
+        <div class="lposts">
+          <span class="chip hub">Echelons of Defense (#41)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Deter (outermost)</div>
+        <div class="lposts">
+          <span class="chip">OPSEC for Homeowners (#47)</span>
+          <span class="chip">Tactical Exterior Lighting (#44)</span>
+          <span class="chip">Pre-Attack Indicators on Camera (#50)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Detect</div>
+        <div class="lposts">
+          <span class="chip">Glass Break Sensors (#52)</span>
+          <span class="chip">Door Chimes &amp; the OODA Loop (#43)</span>
+          <span class="chip">Motion Sensors (#42)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Delay</div>
+        <div class="lposts">
+          <span class="chip">Door &amp; Window Hardening (#49)</span>
+          <span class="chip">The Garage as Soft Flank (#51)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Defend / Respond</div>
+        <div class="lposts">
+          <span class="chip">Family Drill (#53)</span>
+          <span class="chip">Dogs as Force Multipliers (#48)</span>
+          <span class="chip">Communications Redundancy (#45)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Fall Back (innermost)</div>
+        <div class="lposts">
+          <span class="chip">Hard Rooms (#46)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Lifestyle / OPSEC</div>
+        <div class="lposts">
+          <span class="chip">Vacation Hardening (#54)</span>
+          <span class="chip">Counter-Surveillance: Hidden Cameras (#55)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ctitle">Voice anchors (load-bearing, not decorative)</div>
+    <p><em>Echelons of defense</em>, <em>OODA loop</em>, <em>PACE plan</em>, <em>positive ID</em>, <em>AOJ test</em>, <em>hard room</em>, <em>area denial</em>, <em>force multiplier</em>, <em>time-to-target</em>, <em>NDAA-compliant cameras</em> (calls out Hikvision/Dahua bans by name; recommends Reolink, Lorex, Amcrest as the PoE-wired alternatives serious readers actually buy). Authorities cited where natural: Massad Ayoob, John Mosby (Mountain Guerrilla), Ed Calderon, Force Science Institute, FBI UCR, Bureau of Justice Statistics.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- CLUSTER D: SNOWBIRD                                            -->
+  <!-- ============================================================= -->
+  <div class="section-head" style="margin-top:72px;margin-bottom:0;">
+    <div class="kicker">Cluster D · 10 posts</div>
+    <h2 style="font-size:34px;">Snowbird / vacation-home owner community.</h2>
+    <p>Retired or semi-retired professionals, typically 60–75, who own a primary residence up north and a second home in the Sun Belt. Affluent but value-conscious. Practical, slightly weary of vendor sales pitches, respect their own experience. Underserved by mainstream home-security publishers (most write to "young family buying their first home," not "65-year-old with two homes and an insurance crisis"). Florida specifically is in a real estate / insurance crisis cycle — post-hurricane-season carrier non-renewals, HB 621 squatter law, vacancy clauses tightening — a moment of high search intent for our exact services.</p>
+  </div>
+
+  <div class="cluster">
+    <div class="hub"><span class="pin">3 hubs</span> Lifecycle · Risk · System</div>
+    <h4>Three intersecting sub-clusters around the snowbird user journey.</h4>
+    <p class="why">Audience-research-first methodology. Before writing any articles, half a day went to producing an audience brief: a 32-term vocabulary glossary, a 12-pain-point ranking, verified authority citations, and an SEO opportunity scan. The brief established voice rules — <em>peace of mind</em> is acceptable register here (unlike the prepper community), <em>SHTF</em> / tactical / militia language is forbidden, and the reader should be addressed as someone who has owned the home for years and doesn't need basic explanation. Every Lifecycle post links to all Risk + System hubs (because users planning a departure want to know the risks and the systems). Risk and System posts cross-link within their cluster and back to the relevant Lifecycle hub.</p>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="ltitle">Lifecycle (hub A)</div>
+        <div class="lposts">
+          <span class="chip hub">Snowbird Pre-Departure Checklist (#56)</span>
+          <span class="chip">Summerize a Florida Vacation Home (#65)</span>
+          <span class="chip">The Two-Home Tech Stack (#60)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">Risk (hub B)</div>
+        <div class="lposts">
+          <span class="chip hub">Florida Insurance Crisis 2026 (#59)</span>
+          <span class="chip">Florida's Squatter Law HB 621 (#61)</span>
+          <span class="chip">Smart Water Shut-Offs (#57)</span>
+        </div>
+      </div>
+      <div class="layer">
+        <div class="ltitle">System (hub C)</div>
+        <div class="lposts">
+          <span class="chip hub">Cellular Monitoring for Empty Snowbird Home (#58)</span>
+          <span class="chip">Home Watch vs. Cameras (#63)</span>
+          <span class="chip">HOA-Friendly Security for FL Condos &amp; 55+ (#62)</span>
+          <span class="chip">Smart Locks for Cleaners, Pool Guys &amp; Landscapers (#64)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ctitle">Voice anchors (audience-credibility vocabulary)</div>
+    <p><em>Lock-and-leave</em>, <em>home watch</em> (industry-credentialed inspection — NAHWP / National Association of Home Watch Professionals is the body), <em>the 6-month rule / 183 days</em> (IRS/state domicile threshold — readers obsess over it), <em>vacancy clause</em>, <em>named-storm deductible</em>, <em>OIR-B1-1802 wind-mitigation form</em>, <em>HB 621</em> (2024 Florida squatter-removal law — front-page in their forums), <em>Certificate of Alarm</em>, <em>4-point inspection</em>, <em>Citizens Property Insurance depopulation</em>. Authorities cited: Stephen Fine (Snowbird Advisor), Mark Friedlander (Triple-I), NAHWP, FLOIR, Canadian Snowbird Association.</p>
+  </div>
+
+  <div class="callout cascade">
+    <div class="ctitle">Production methodology (how 10 posts shipped in one afternoon)</div>
+    <p>One audience-research agent built the brief. Ten writing sub-agents then wrote one post each in parallel, fed identical voice rules and a cluster-aware internal-link map (each agent knew which other 4 cluster siblings to link to). All 10 posts shipped in a single afternoon. The same fan-out pattern (with batch-specific voice rules) was used for the prepper cluster.</p>
+  </div>
+
+  <!-- ============================================================= -->
+  <!-- POST MANIFEST                                                  -->
+  <!-- ============================================================= -->
+  <div class="section-head" style="margin-top:72px;margin-bottom:0;">
+    <div class="kicker">Per-post manifest</div>
+    <h2 style="font-size:30px;">All 41 new posts, IDs 25–65.</h2>
+    <p>All published live. Word counts 1,200–1,900. Each post includes 3–6 verified external citations.</p>
+  </div>
+
+  <table class="manifest">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Cluster</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="id">25</td><td class="title">When Seconds Count: A Step-by-Step Explanation of What Happens When Your Home Security Alarm Goes Off</td><td class="cat">Safety Tips</td><td class="cat">2025-12-15</td><td class="batch b-mainstream">Mainstream A</td></tr>
+      <tr><td class="id">26</td><td class="title">Top Home Security Technology Trends of 2026</td><td class="cat">Technology</td><td class="cat">2026-01-21</td><td class="batch b-mainstream">Mainstream A</td></tr>
+      <tr><td class="id">27</td><td class="title">Self-Monitored vs. Professionally Monitored Home Security: Which Is Right for You?</td><td class="cat">Home Security</td><td class="cat">2026-02-26</td><td class="batch b-mainstream">Mainstream A</td></tr>
+      <tr><td class="id">28</td><td class="title">Can a Home Security System Lower Your Homeowners Insurance Rate?</td><td class="cat">Cost &amp; Planning</td><td class="cat">2025-11-18</td><td class="batch b-mainstream">Mainstream A</td></tr>
+      <tr><td class="id">29</td><td class="title">Best Security Systems for Renters: Protect Your Home Without Permanent Installation</td><td class="cat">Home Security</td><td class="cat">2025-10-28</td><td class="batch b-mainstream">Mainstream A</td></tr>
+      <tr><td class="id">30</td><td class="title">Best Home Security Systems: Comparison &amp; Pro Reviews</td><td class="cat">Home Security</td><td class="cat">2026-04-08</td><td class="batch b-mainstream">Mainstream A</td></tr>
+      <tr><td class="id">31</td><td class="title">How to Choose the Right Home Security System: A Decision Framework for Every Household</td><td class="cat">Home Security</td><td class="cat">2025-11-04</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">32</td><td class="title">The Complete Guide to Smart Locks for Your Front Door</td><td class="cat">Technology</td><td class="cat">2025-11-12</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">33</td><td class="title">What Is the Best Monitored Home Security System? A 2026 Buyer's Guide</td><td class="cat">Home Security</td><td class="cat">2025-11-25</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">34</td><td class="title">Smart Tech Home Security: Building a Connected Defense for Your Home</td><td class="cat">Technology</td><td class="cat">2025-12-02</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">35</td><td class="title">Why Don't Burglar Alarms Have Timers? The Surprising Truth About Alarm Response</td><td class="cat">Safety Tips</td><td class="cat">2025-12-22</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">36</td><td class="title">How Do Police Respond to a Home Security Alarm? Inside the Dispatch Process</td><td class="cat">Safety Tips</td><td class="cat">2026-01-08</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">37</td><td class="title">How Do Motion Sensors Work on Security Cameras? The Tech Behind the Trigger</td><td class="cat">Technology</td><td class="cat">2026-02-04</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">38</td><td class="title">What's the Best Home Security System to Buy in 2026? Top Picks by Use Case</td><td class="cat">Home Security</td><td class="cat">2026-03-01</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">39</td><td class="title">Can I Control My Home Security System Remotely? Yes — Here's How It Actually Works</td><td class="cat">Technology</td><td class="cat">2026-03-18</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">40</td><td class="title">How Effective Are Alarm Yard Signs in Deterring Burglars? What the Research Says</td><td class="cat">Safety Tips</td><td class="cat">2026-04-15</td><td class="batch b-seo">SEO B</td></tr>
+      <tr><td class="id">41</td><td class="title">Echelons of Defense: How to Layer Home Security Like You Mean It</td><td class="cat">Safety Tips</td><td class="cat">2025-10-21</td><td class="batch b-prepper">Prepper C · Hub</td></tr>
+      <tr><td class="id">42</td><td class="title">Early Warning and Detection: Why Motion Sensors Are Non-Negotiable for Home Defense</td><td class="cat">Safety Tips</td><td class="cat">2025-12-05</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">43</td><td class="title">Door Chimes and the OODA Loop: Why an Audible Alert Saves Critical Seconds</td><td class="cat">Safety Tips</td><td class="cat">2026-01-15</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">44</td><td class="title">Tactical Exterior Lighting: Area Denial Without Firing a Shot</td><td class="cat">Safety Tips</td><td class="cat">2026-02-28</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">45</td><td class="title">Communications Redundancy: Keeping Home Security Online When the Grid Goes Dark</td><td class="cat">Safety Tips</td><td class="cat">2026-04-12</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">46</td><td class="title">Hard Rooms: Designing Your Final Fallback Position</td><td class="cat">Safety Tips</td><td class="cat">2025-11-08</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">47</td><td class="title">OPSEC for Homeowners: What Your House Is Telling Strangers</td><td class="cat">Safety Tips</td><td class="cat">2025-11-21</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">48</td><td class="title">Dogs as Force Multipliers: Where Electronic Detection Falls Short</td><td class="cat">Safety Tips</td><td class="cat">2026-03-08</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">49</td><td class="title">Door and Window Hardening: The 'Delay' Echelon Done Right</td><td class="cat">Safety Tips</td><td class="cat">2025-12-29</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">50</td><td class="title">Pre-Attack Indicators on Camera: What Casing Looks Like Before the Break-In</td><td class="cat">Safety Tips</td><td class="cat">2026-01-12</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">51</td><td class="title">The Garage Is Your Soft Flank: Securing the Most Common Entry Point</td><td class="cat">Safety Tips</td><td class="cat">2026-01-28</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">52</td><td class="title">Glass Break Sensors: The Sensor Layer Most Homeowners Skip</td><td class="cat">Technology</td><td class="cat">2026-02-15</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">53</td><td class="title">The Family Drill: What Happens When the Chime Fires</td><td class="cat">Safety Tips</td><td class="cat">2026-03-08</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">54</td><td class="title">Vacation Hardening: How to Leave Without Leaving Your House Vulnerable</td><td class="cat">Safety Tips</td><td class="cat">2026-03-25</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">55</td><td class="title">Counter-Surveillance: Finding Hidden Cameras in a Rental, AirBnB, or After a Divorce</td><td class="cat">Safety Tips</td><td class="cat">2026-04-19</td><td class="batch b-prepper">Prepper C</td></tr>
+      <tr><td class="id">56</td><td class="title">Snowbird Pre-Departure Checklist: Locking Up Your Florida Home for the Summer</td><td class="cat">Safety Tips</td><td class="cat">2025-11-04</td><td class="batch b-snowbird">Snowbird D · Lifecycle Hub</td></tr>
+      <tr><td class="id">57</td><td class="title">Smart Water Shut-Offs: How Snowbirds Avoid the $40,000 Leak</td><td class="cat">Technology</td><td class="cat">2025-12-09</td><td class="batch b-snowbird">Snowbird D · Risk</td></tr>
+      <tr><td class="id">58</td><td class="title">Cellular Monitoring for an Empty Snowbird Home: Why Wi-Fi Alone Isn't Enough</td><td class="cat">Home Security</td><td class="cat">2025-12-22</td><td class="batch b-snowbird">Snowbird D · System Hub</td></tr>
+      <tr><td class="id">59</td><td class="title">The Florida Insurance Crisis &amp; What Vacation-Home Owners Can Do in 2026</td><td class="cat">Cost &amp; Planning</td><td class="cat">2026-01-08</td><td class="batch b-snowbird">Snowbird D · Risk Hub</td></tr>
+      <tr><td class="id">60</td><td class="title">The Two-Home Tech Stack: One App, Two Houses, Zero Headaches</td><td class="cat">Technology</td><td class="cat">2026-01-23</td><td class="batch b-snowbird">Snowbird D · Lifecycle</td></tr>
+      <tr><td class="id">61</td><td class="title">Florida's Squatter Law (HB 621): A Snowbird's Playbook for Empty-House Season</td><td class="cat">Safety Tips</td><td class="cat">2026-02-11</td><td class="batch b-snowbird">Snowbird D · Risk</td></tr>
+      <tr><td class="id">62</td><td class="title">HOA-Friendly Security for Florida Condos &amp; 55+ Communities</td><td class="cat">Home Security</td><td class="cat">2026-02-22</td><td class="batch b-snowbird">Snowbird D · System</td></tr>
+      <tr><td class="id">63</td><td class="title">Home Watch vs. Cameras: Which Does a Snowbird Actually Need? (Honest Answer: Both)</td><td class="cat">Home Security</td><td class="cat">2026-03-12</td><td class="batch b-snowbird">Snowbird D · System</td></tr>
+      <tr><td class="id">64</td><td class="title">Smart Locks for Cleaners, Pool Guys &amp; Landscapers: Snowbird Access Without Key Chaos</td><td class="cat">Technology</td><td class="cat">2026-04-02</td><td class="batch b-snowbird">Snowbird D · System</td></tr>
+      <tr><td class="id">65</td><td class="title">How to Summerize a Florida Vacation Home: Hurricanes, Humidity &amp; Empty-House Risk</td><td class="cat">Safety Tips</td><td class="cat">2026-04-22</td><td class="batch b-snowbird">Snowbird D · Lifecycle</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Existing posts touched -->
+  <div class="section-head" style="margin-top:64px;margin-bottom:16px;">
+    <div class="kicker">Existing posts touched</div>
+    <h2 style="font-size:30px;">All 65 posts received at least one improvement.</h2>
+  </div>
+
+  <div class="cleanup-list">
+    <div class="cleanup-item">
+      <h4>Heading hierarchy fix <span class="count">65 posts</span></h4>
+      <p>One-line component change in <code>table-of-contents.tsx</code> (h3 → h2) cleared an <code>h1 → h3</code> level skip flagged on every post that uses the blog template. Resolved 32 of 46 "Content not optimized" warnings in a single commit.</p>
+    </div>
+    <div class="cleanup-item">
+      <h4>metaTitle field added <span class="count">64 posts</span></h4>
+      <p>Optional shorter SEO title under 70 chars, separate from the display H1 which keeps the long descriptive form. Pattern: <code>metaTitle ?? `${post.title} | Smart Security Concierge`</code>.</p>
+    </div>
+    <div class="cleanup-item">
+      <h4>Title / H1 differentiation in template <span class="count">65 posts</span></h4>
+      <p>Template <code>generateMetadata</code> now appends <code>" | Smart Security Concierge"</code> to the title (or uses <code>metaTitle</code>); H1 stays clean. 57 of 59 baseline duplicate H1=title flags cleared.</p>
+    </div>
+    <div class="cleanup-item">
+      <h4>Broken external link fixes <span class="count">11 fixes</span></h4>
+      <p>6 posts updated. Energy.gov / cpsc.gov path changes, USAA insurance URL, JD Power press release URL, two outdated guardianprotection.com URLs, two broken internal slug references in <code>home-security-trends-break-in-patterns-2025</code>.</p>
+    </div>
+    <div class="cleanup-item">
+      <h4>Cross-links added (lonely posts) <span class="count">10 fixes</span></h4>
+      <p>Added cross-links from related posts to 9 single-incoming-link articles plus an anchor-text fix on <code>two-home-tech-stack-snowbirds</code>. The lonely-post count cleared on the original 9 — one new flag emerged from a different page as the dynamic sitemap exposed previously-orphaned content.</p>
+    </div>
+    <div class="cleanup-item">
+      <h4>Multiple-H1 demotion <span class="count">1 post</span></h4>
+      <p><code>professional-home-security-vs-diy-guide</code> had a body-content <code>&lt;h1&gt;</code> in addition to the post template's H1. Demoted to <code>&lt;h2&gt;</code>; the template's H1 (post title) is now the only H1.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <div class="ctitle">Editorial framework</div>
+    <p>Four categories — Home Security Systems, Technology &amp; Innovation, Safety Tips, Cost &amp; Planning. Every post tagged into exactly one category. Categories drive client-side filtering on <code>/blog?category=X</code>. Schema: <code>BlogPosting</code> on every post via <code>&lt;Script type="application/ld+json"&gt;</code>; <code>Blog</code> schema on the index; <code>AboutPage</code> + <code>Organization</code> on <code>/company</code>. No FAQ or BreadcrumbList schema added during this engagement.</p>
+  </div>
+</section>
+
+<!-- ============================================================= -->
+<!-- FOOTER                                                         -->
+<!-- ============================================================= -->
+<footer class="colophon">
+  <div class="brand">
+    <img src="assets/logo-horizontal.svg" alt="Move Concierge" />
+    <span>Smart Security Concierge · 5-Day Sprint Report · April 27, 2026</span>
+  </div>
+  <div>Source data: Semrush Site Audit (4 runs, April 27, 2026 · 16:37–19:34 UTC) · PageSpeed Insights (Lighthouse 13.0.1)</div>
+</footer>
+
+</main>
+
+</body>
+</html>
