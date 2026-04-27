@@ -44,7 +44,7 @@
       <span class="num new">111</span>
     </div>
     <div class="stat">
-      <span>Mobile Lighthouse</span>
+      <span>Mobile speed score</span>
       <span class="num">68</span>
       <span class="arrow">→</span>
       <span class="num new">98</span>
@@ -71,7 +71,7 @@
     Internal report · Smart Security Concierge · Marketing
   </div>
   <h1>5-Day Sprint Report<br/><em>Smart Security Concierge.</em></h1>
-  <p class="sub">Five working days. A full design-system port, 41 new posts across two audience clusters, Semrush Site Health up 13 points (79% → 92%) with total issues down 91%, and mobile Lighthouse 68 → 98.</p>
+  <p class="sub">Five working days. A full design-system port, 41 new posts across two audience clusters, Semrush Site Health up 13 points (79% → 92%) with total issues down 91%, and mobile pages that now load four times faster — Google's mobile speed score went from 68 to 98 out of 100.</p>
   <div class="meta">
     <div class="cell"><label>Prepared by</label><span>Marvin</span></div>
     <div class="cell"><label>For</label><span>Leadership review</span></div>
@@ -90,7 +90,7 @@
   <div class="section-head">
     <div class="kicker">Part 1 · Executive summary</div>
     <h2>Five days. <em>Four workstreams.</em> Every leading metric in the right direction.</h2>
-    <p>April 23–27, 2026. The work split across four parallel tracks: a full visual redesign onto the Move Concierge design system, 41 new blog posts across two audience-targeted hub-and-spoke clusters, a Semrush SEO audit with same-day remediation, and a mobile performance push that closed at a 98 Lighthouse score. The headline numbers below come from the final Semrush audit at 19:34 UTC and the final PageSpeed Insights run on April 27.</p>
+    <p>April 23–27, 2026. The work split across four parallel tracks: a full visual redesign onto the Move Concierge design system, 41 new blog posts across two audience-targeted hub-and-spoke clusters, a Semrush SEO audit with same-day remediation, and a mobile performance push that took the home page from a sluggish 10.6-second mobile load to 2.3 seconds — the kind of speed Google rewards in mobile search rankings and visitors don't bounce away from. The headline numbers below come from the final Semrush audit at 19:34 UTC and the final PageSpeed Insights run on April 27.</p>
   </div>
 
   <!-- Headline metrics -->
@@ -118,14 +118,14 @@
     </div>
 
     <div class="headline-card">
-      <div class="label">Mobile Lighthouse Performance</div>
+      <div class="label">Mobile page speed — Google Lighthouse score</div>
       <div class="before-after">
         <span class="num was">68</span>
         <span class="arrow">→</span>
         <span class="num">98</span>
         <span class="delta">+30 points</span>
       </div>
-      <p class="blurb">LCP cut from 10.6s to 2.3s (−78%). TBT 270ms → 110ms. Driven by enabling Vercel image optimization and lazy-loading GTM and Convert Experiences off the critical path.</p>
+      <p class="blurb">Google's standard mobile speed score (out of 100) — the same one feeding into Core Web Vitals search ranking. In plain terms: the home page now feels usable in 2.3 seconds on a phone instead of 10.6 (−78%), and main-thread blocking time dropped from 270ms to 110ms. Driven by turning on Vercel image optimization and pushing GTM + Convert Experiences off the critical loading path.</p>
     </div>
 
     <div class="headline-card">
@@ -225,7 +225,7 @@
     <div>
       <h3>Top wins</h3>
       <p><strong>1 · Site Health 79% → 92%, +13 points on Semrush's composite score.</strong> The single biggest mover was a one-file rewrite of <code>public/robots.txt</code>, which had been silently blocking <code>/_next/</code> for all crawlers — de-listing 966 Next.js JS, CSS, font, and image build assets from search engine view. It also disallowed six real user-facing routes (<code>/smart-security/</code>, <code>/equipment/</code>, <code>/order-confirmation/</code>, three more). Rewriting from scratch resolved 1,065 warnings in one phase — 89% of every baseline warning, before any other fix shipped.</p>
-      <p><strong>2 · Mobile Lighthouse 68 → 98.</strong> The new Vercel deployment had inherited <code>images: { unoptimized: true }</code> from a v0 default, forcing every hero image to ship at full source resolution (one was 4406×3524 displayed at 777 pixels — 1.6 MiB of waste across five images). Removing one config line, then escalating GTM and Convert Experiences to <code>strategy="lazyOnload"</code>, cut LCP from 10.6s to 2.3s on a mid-tier mobile device.</p>
+      <p><strong>2 · Mobile pages now load 4× faster.</strong> Google's mobile speed score (Lighthouse, the same metric feeding Core Web Vitals search ranking) jumped from 68 to 98 out of 100. In real-world terms: the home page now appears usable on a phone in 2.3 seconds instead of 10.6 — well inside the threshold where visitors stay instead of bouncing, and inside the band Google rewards in mobile search results. The new Vercel deployment had inherited <code>images: { unoptimized: true }</code> from a v0 default, forcing every hero image to ship at full source resolution (one was 4406×3524 displayed at 777 pixels — 1.6 MiB of waste across five images). Removing one config line, then escalating GTM and Convert Experiences to <code>strategy="lazyOnload"</code>, was enough to do it.</p>
       <p><strong>3 · 41 new blog posts published in 5 days.</strong> Split into four batches with audience-specific voice rules: 6 mainstream posts (user-supplied drafts), 10 SEO-targeted posts (search-query-driven), 15 prepper / second-amendment community posts (operator vocabulary, doctrine register), 10 snowbird / vacation-home owner posts (insurance-crisis literacy, NAHWP-credentialed home-watch). The two community-targeted batches each anchor a hub-and-spoke topical authority play.</p>
       <p><strong>4 · A single-line component fix resolved 32 of 46 "Content not optimized" flags.</strong> The Table of Contents component rendered <code>&lt;h3&gt;In this article&lt;/h3&gt;</code> between the post template's H1 and the body's first H2 — creating an <code>h1 → h3</code> level skip on every post. Changed to <code>&lt;h2&gt;</code>; 32 posts cleared in one commit.</p>
       <p><strong>5 · Full Move Concierge design-system port in 3 working days.</strong> 17 routes redesigned, 12 shadcn primitives rewritten with MC <code>cva</code> variant maps, and 11 new shared layout primitives (Section, Container, Navbar, Hero with 4 variants, CTABand, FAQ, ZipForm, TestimonialCard, TestimonialCarousel, StatsBlock). All existing body copy and image assets preserved verbatim — purely structural / visual, not editorial.</p>
@@ -831,9 +831,11 @@
 <section id="perf">
   <div class="section-head">
     <div class="kicker">Part 4 · Site speed</div>
-    <h2>Mobile Lighthouse <em>68 → 98.</em> LCP cut from 10.6s to 2.3s.</h2>
-    <p>April 27, 2026 · 11:51 AM CDT baseline → 2:33 PM CDT final. Three PageSpeed Insights runs captured the trajectory. Desktop was already strong at the start of the engagement; the mobile push was the bigger story. The bottleneck was render-blocking JavaScript and main-thread CPU, not bytes — image weight mattered, but loading GTM and Convert Experiences synchronously in <code>&lt;head&gt;</code> mattered more.</p>
+    <h2>Mobile pages load <em>4× faster.</em> Google's speed score: 68 → 98.</h2>
+    <p>April 27, 2026 · 11:51 AM CDT baseline → 2:33 PM CDT final. Three PageSpeed Insights runs captured the trajectory. <strong>Why this matters:</strong> Google's Lighthouse speed score (out of 100) feeds directly into Core Web Vitals, a confirmed mobile search ranking factor. It also tracks what users actually feel — every second a mobile page takes to render is a slice of visitors who hit back before the page paints. The home page going from 10.6s to 2.3s on Largest Contentful Paint moves it from "users bounce" territory to "Google rewards" territory. Desktop was already strong at the start; the mobile push was the bigger story. The bottleneck was render-blocking JavaScript and main-thread CPU, not bytes — image weight mattered, but loading GTM and Convert Experiences synchronously in <code>&lt;head&gt;</code> mattered more.</p>
   </div>
+
+  <p class="metric-legend"><strong>Reading the tables below:</strong> <em>FCP</em> (First Contentful Paint) — when something visible first appears. <em>LCP</em> (Largest Contentful Paint) — when the page <em>looks</em> done loading; Google's headline speed metric and a Core Web Vitals ranking signal. <em>TBT</em> (Total Blocking Time) — how long the page is frozen and won't respond to taps. <em>CLS</em> (Cumulative Layout Shift) — how much the page jumps around as it loads. Lower is better on every one.</p>
 
   <div class="perf-grid">
     <!-- Mobile -->
@@ -1060,7 +1062,7 @@
     <div class="ctitle">Things tried that didn't make the cut</div>
     <p><strong>Source-image resizing.</strong> Considered using <code>sharp</code> to physically resize the 4400×3500 source JPEGs in <code>public/images/</code>. Skipped because Vercel's image CDN already produces correctly-sized output variants — the only savings would be a one-time speedup on Vercel cold-cache warm-up.</p>
     <p><strong>AVIF source conversion.</strong> Same reasoning — Vercel auto-converts to AVIF/WebP at output regardless of source format.</p>
-    <p><strong>Critical CSS inlining.</strong> Would save ~380ms on mobile render-blocking but requires either a third-party tool integration or manual extraction. De-scoped — multi-day work for ~5 points of Lighthouse gain on top of an already-98 score.</p>
+    <p><strong>Critical CSS inlining.</strong> Would save ~380ms on mobile render-blocking but requires either a third-party tool integration or manual extraction. De-scoped — multi-day work for ~5 points of speed-score gain on top of an already-98 score.</p>
     <p><strong>Removing Microsoft Clarity.</strong> It's loaded indirectly via GTM. Removing it requires editing GTM tags rather than codebase changes. Out of scope for this engagement.</p>
   </div>
 </section>
